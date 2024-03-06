@@ -1,4 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
+import * as React from 'react';
+import { AppRegistry } from 'react-native';
+import { Provider as PaperProvider } from 'react-native-paper';
 import {
   useFonts,
   Inter_400Regular,
