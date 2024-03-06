@@ -4,6 +4,7 @@ module.exports = function (api) {
     presets: ['babel-preset-expo'],
     plugins: [
       'nativewind/babel',
+      'react-native-paper/babel',
       [
         'module:react-native-dotenv',
         { moduleName: '@env', allowUndefined: false },
@@ -28,6 +29,7 @@ module.exports = function (api) {
           },
         },
       ],
+      'react-native-reanimated/plugin',
     ],
   };
 };

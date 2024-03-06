@@ -14,6 +14,15 @@ export const typography = StyleSheet.create({
     fontSize: 18,
     fontFamily: 'Inter_600SemiBold',
   },
+  // loginbutton:{
+  //   height: 56,
+  //   width:"100%",
+  //   flexDirection:'row' ,
+  //   justifyContent:'center',
+  //   alignItems:'center'
+
+  //   // h-14 rounded-xl w-full bg-white flex-row items-center justify-center
+  // },
   paragraph: {
     fontSize: 16,
     fontFamily: 'Inter_400Regular',
