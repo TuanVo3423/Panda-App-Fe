@@ -26,6 +26,7 @@ module.exports = function (api) {
             '@theme': './src/theme',
             '@types': './src/@types',
             '@services': './src/services',
+            '@features': './src/features',
           },
         },
       ],

@@ -9,9 +9,9 @@ import {
   Inter_700Bold,
   Inter_800ExtraBold,
 } from '@expo-google-fonts/inter';
-import Loading from './src/components/Loading';
+import { Loading } from '@components/common';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { Routes } from './src/routes';
+import { Navigation } from './src/navigation';
 import { colors } from '@theme/colors';
 import useAuthenticatedStore from '@stores/useAuthenticatedStore';
 // import OneSignal from 'react-native-onesignal';
@@ -34,7 +34,7 @@ export default function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Routes />
+      <Navigation />
       <StatusBar style="light" backgroundColor={colors.primary} translucent />
     </QueryClientProvider>
   );

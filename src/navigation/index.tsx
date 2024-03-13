@@ -1,14 +1,15 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { DashboardRoutes } from './DashboardRoutes';
-import { AuthRoutes } from './AuthRoutes';
+import { RootNavigator } from './RootNavigator';
+import { AuthNavigator } from './AuthNavigator';
 import useAuthenticatedStore from '@stores/useAuthenticatedStore';
 
-export function Routes() {
+export function Navigation() {
   const { isAuthenticated } = useAuthenticatedStore();
+  const isLogged = false;
   return (
     <NavigationContainer>
-      {isAuthenticated ? <DashboardRoutes /> : <AuthRoutes />}
+      {isLogged ? <RootNavigator /> : <AuthNavigator />}
     </NavigationContainer>
   );
 }
