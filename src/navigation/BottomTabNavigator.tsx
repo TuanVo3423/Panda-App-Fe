@@ -1,7 +1,8 @@
 import { RootTabParamList, RootTabScreenProps } from './data';
 import Colors from '@constants/Colors';
 import useColorScheme from '@hooks/useColorScheme';
-
+import Ionicons from '@expo/vector-icons/Ionicons'
+import FontAwesome6 from '@expo/vector-icons/FontAwesome5'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { CaptureScreen } from '@screens/capture';
 import { CommunityScreen } from '@screens/community';
@@ -23,20 +24,15 @@ export default function BottomTabNavigator() {
       <BottomTab.Screen
         name="Home"
         component={HomeScreen}
-        // <'Home'> la 1 man hinh trong root tab param list, no se dc nhan composite giua ButtonTabNavigator va RootTabParamList
+       
         options={({ navigation }: RootTabScreenProps<'Home'>) => ({
           title: 'Home',
-          // tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          // headerRight: () => (
-          //   <Pressable
-          //     onPress={() => navigation.navigate('Modal')}
-          //     style={({ pressed }) => ({
-          //       opacity: pressed ? 0.5 : 1,
-          //     })}
-          //   >
-          //     <Text>INFO ICON</Text>
-          //   </Pressable>
-          // ),
+          headerShown:false,
+          tabBarIcon: ({ color , focused}) => <Ionicons name= {focused
+          ? 'home'
+          : 'home-outline'} size={25} color={'gray'}/>,
+          tabBarInactiveTintColor: 'gray',
+          tabBarActiveTintColor: 'gray',
         })}
       />
       <BottomTab.Screen
@@ -44,11 +40,16 @@ export default function BottomTabNavigator() {
         component={ExploreScreen}
         options={{
           title: 'Explore',
-          // tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ color , focused}) => <Ionicons name= {focused
+            ? 'albums'
+            : 'albums-outline'} size={25} color={'gray'}/>,
+            tabBarInactiveTintColor: 'gray',
+            tabBarActiveTintColor: 'gray',
         }}
       />
       <BottomTab.Screen
         name="Capture"
+
         component={CaptureScreen}
         options={
           {
@@ -66,7 +67,11 @@ export default function BottomTabNavigator() {
           {
             // headerShown: false,
             // title: 'Community',
-            // tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+            tabBarIcon: ({ color , focused}) => <Ionicons name= {focused
+              ? 'chatbubble-ellipses'
+              : 'chatbubble-ellipses-outline'} size={25} color={'gray'}/>,
+              tabBarInactiveTintColor: 'gray',
+              tabBarActiveTintColor: 'gray',
           }
         }
       />
@@ -78,7 +83,11 @@ export default function BottomTabNavigator() {
           {
             // headerShown: false,
             // title: 'Community',
-            // tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+            tabBarIcon: ({ color , focused}) => <Ionicons name= {focused
+              ? 'menu-sharp'
+              : 'menu-outline'} size={25} color={'gray'}/>,
+              tabBarInactiveTintColor: 'gray',
+              tabBarActiveTintColor: 'gray',
           }
         }
       />

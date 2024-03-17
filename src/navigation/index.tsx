@@ -6,7 +6,7 @@ import useAuthenticatedStore from '@stores/useAuthenticatedStore';
 
 export function Navigation() {
   const { isAuthenticated } = useAuthenticatedStore();
-  const isLogged = false;
+  const isLogged = true;
   return (
     <NavigationContainer>
       {isLogged ? <RootNavigator /> : <AuthNavigator />}
