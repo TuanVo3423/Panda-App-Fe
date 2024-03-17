@@ -5,6 +5,7 @@ import BottomSheet, {
   BottomSheetBackdrop,
   BottomSheetView,
 } from '@gorhom/bottom-sheet';
+import { useNavigation } from '@react-navigation/native';
 import React, { useCallback, useRef, useState } from 'react';
 import {
   Keyboard,
@@ -18,7 +19,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 export function LoginScreen() {
   const sheetRef = useRef<BottomSheet>(null);
   const sheetRef1 = useRef<BottomSheet>(null);
-
+  const navigation = useNavigation();
   const [checked, setChecked] = React.useState('first');
   const [value, setValue] = useState<string>('');
   const snapPoints = ['22%'];
@@ -78,6 +79,7 @@ export function LoginScreen() {
                 descript="Tiếp tục với Apple"
                 bgColor="black"
                 txtColor="white"
+                
               />
 
               <TouchableOpacity
