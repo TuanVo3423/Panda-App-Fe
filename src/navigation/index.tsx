@@ -1,15 +1,33 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { RootNavigator } from './RootNavigator';
 import { AuthNavigator } from './AuthNavigator';
 import useAuthenticatedStore from '@stores/useAuthenticatedStore';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { AppStackParamList } from './data';
+// import { ModalScreen } from '@screens/home';
+import BottomTabNavigator from './BottomTabNavigator';
+import { NotificationScreen } from '@screens/home/NotificationScreen';
+import { FormPostScreen } from '@screens/community/FormPostScreen';
 
-export function Navigation() {
+const Stack = createNativeStackNavigator<AppStackParamList>();
+export function AppNavigation() {
   const { isAuthenticated } = useAuthenticatedStore();
-  const isLogged = true;
+  // const isLogged = true;
+
   return (
     <NavigationContainer>
-      {isLogged ? <RootNavigator /> : <AuthNavigator />}
+      <Stack.Navigator initialRouteName={isAuthenticated ? 'Root' : 'Auth'}>
+        <Stack.Screen
+          name="Root"
+          options={{ headerShown: false }}
+          component={BottomTabNavigator}
+        />
+        <Stack.Screen name="Auth" component={AuthNavigator} />
+        <Stack.Group>
+          <Stack.Screen name="Notifications" component={NotificationScreen} />
+          <Stack.Screen name="FormPost" component={FormPostScreen} />
+        </Stack.Group>
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }

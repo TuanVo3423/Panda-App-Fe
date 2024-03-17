@@ -1,6 +1,12 @@
+import { extend } from 'dayjs';
 import React from 'react';
-import { Image, Text, TouchableOpacity } from 'react-native';
-interface LoginButtonProps {
+import {
+  Image,
+  Text,
+  TouchableOpacity,
+  TouchableOpacityProps,
+} from 'react-native';
+interface LoginButtonProps extends TouchableOpacityProps {
   IconUri: any;
   descript: string;
   bgColor: string;
@@ -11,9 +17,11 @@ export const LoginButton: React.FC<LoginButtonProps> = ({
   descript,
   bgColor,
   txtColor,
+  ...rest
 }) => {
   return (
     <TouchableOpacity
+      {...rest}
       className="h-14 rounded-xl w-full flex-row items-center justify-center my-1"
       style={{ backgroundColor: bgColor }}
     >

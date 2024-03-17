@@ -1,10 +1,15 @@
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { RootTabScreenProps } from '@navigation/data';
 import React from 'react';
-import { Text } from 'react-native';
-import { CommunityTabParamList } from './data';
+import { Pressable, Text, View } from 'react-native';
 
-type Props = {};
-
-export const CommunityScreen = (props: Props) => {
-  return <Text>CommunityScreen</Text>;
+export const CommunityScreen = ({
+  navigation,
+}: RootTabScreenProps<'Community'>) => {
+  return (
+    <View>
+      <Pressable onPress={() => navigation.navigate('FormPost')}>
+        <Text>Community</Text>
+      </Pressable>
+    </View>
+  );
 };

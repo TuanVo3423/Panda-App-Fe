@@ -5,7 +5,8 @@ import BottomSheet, {
   BottomSheetBackdrop,
   BottomSheetView,
 } from '@gorhom/bottom-sheet';
-import { useNavigation } from '@react-navigation/native';
+import { AppStackScreenProps } from '@navigation/data';
+import useAuthenticatedStore from '@stores/useAuthenticatedStore';
 import React, { useCallback, useRef, useState } from 'react';
 import {
   Keyboard,
@@ -16,10 +17,11 @@ import {
   View,
 } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-export function LoginScreen() {
+export function LoginScreen({ navigation }: AppStackScreenProps<'Auth'>) {
   const sheetRef = useRef<BottomSheet>(null);
   const sheetRef1 = useRef<BottomSheet>(null);
-  const navigation = useNavigation();
+  const { setIsAuthenticated } = useAuthenticatedStore();
+  // const navigation = useNavigation();
   const [checked, setChecked] = React.useState('first');
   const [value, setValue] = useState<string>('');
   const snapPoints = ['22%'];
@@ -67,6 +69,10 @@ export function LoginScreen() {
                 descript="Tiếp tục với Google"
                 bgColor="white"
                 txtColor="black"
+                onPress={() => {
+                  setIsAuthenticated(true);
+                  navigation.navigate('Root');
+                }}
               />
               <LoginButton
                 IconUri="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/480px-Facebook_Logo_%282019%29.png"
@@ -79,7 +85,6 @@ export function LoginScreen() {
                 descript="Tiếp tục với Apple"
                 bgColor="black"
                 txtColor="white"
-                
               />
 
               <TouchableOpacity

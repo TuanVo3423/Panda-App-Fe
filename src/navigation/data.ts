@@ -1,18 +1,21 @@
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
-import {
-  CompositeScreenProps,
-  NavigatorScreenParams,
-} from '@react-navigation/native';
+import { CompositeScreenProps } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-export type RootStackParamList = {
-  Root: NavigatorScreenParams<RootTabParamList> | undefined;
-  NotFound: undefined;
+// app navigation
+export type AppStackParamList = {
+  Root: undefined;
+  Auth: undefined;
+  Modal: undefined;
+  Notifications: undefined;
+  FormPost: undefined;
 };
 
-export type RootStackScreenProps<Screen extends keyof RootStackParamList> =
-  NativeStackScreenProps<RootStackParamList, Screen>;
+// app props types
+export type AppStackScreenProps<Screen extends keyof AppStackParamList> =
+  NativeStackScreenProps<AppStackParamList, Screen>;
 
+// root tab navigation
 export type RootTabParamList = {
   Home: undefined;
   Explore: undefined;
@@ -21,10 +24,11 @@ export type RootTabParamList = {
   Menu: undefined;
 };
 
+// root tab props types
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> =
   CompositeScreenProps<
     BottomTabScreenProps<RootTabParamList, Screen>,
-    NativeStackScreenProps<RootStackParamList>
+    NativeStackScreenProps<AppStackParamList>
   >;
 
 export type AuthStackParamList = {

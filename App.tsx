@@ -11,7 +11,7 @@ import {
 } from '@expo-google-fonts/inter';
 import { Loading } from '@components/common';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { Navigation } from './src/navigation';
+import { AppNavigation } from './src/navigation';
 import { colors } from '@theme/colors';
 import useAuthenticatedStore from '@stores/useAuthenticatedStore';
 // import OneSignal from 'react-native-onesignal';
@@ -34,7 +34,7 @@ export default function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Navigation />
+      <AppNavigation />
       <StatusBar style="light" backgroundColor={colors.primary} translucent />
     </QueryClientProvider>
   );
