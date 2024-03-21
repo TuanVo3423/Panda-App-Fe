@@ -19,6 +19,7 @@ import { View } from 'native-base';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { EvilIcons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
+import { ProfileScreen } from '@screens/profile/ProfileScreen';
 
 const Stack = createNativeStackNavigator<AppStackParamList>();
 export function AppNavigation() {
