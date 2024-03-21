@@ -9,6 +9,7 @@ export type AppStackParamList = {
   Modal: undefined;
   Notifications: undefined;
   FormPost: undefined;
+  Profile: undefined;
 };
 
 // app props types

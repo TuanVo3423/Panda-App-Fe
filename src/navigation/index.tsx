@@ -8,6 +8,7 @@ import { AppStackParamList } from './data';
 import BottomTabNavigator from './BottomTabNavigator';
 import { NotificationScreen } from '@screens/home/NotificationScreen';
 import { FormPostScreen } from '@screens/community/FormPostScreen';
+import { ProfileScreen } from '@screens/profile/ProfileScreen';
 
 const Stack = createNativeStackNavigator<AppStackParamList>();
 export function AppNavigation() {
@@ -26,6 +27,7 @@ export function AppNavigation() {
         <Stack.Group>
           <Stack.Screen name="Notifications" component={NotificationScreen} />
           <Stack.Screen name="FormPost" component={FormPostScreen} />
+          <Stack.Screen name="Profile" component={ProfileScreen} />
         </Stack.Group>
       </Stack.Navigator>
     </NavigationContainer>
