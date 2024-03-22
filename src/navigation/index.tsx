@@ -22,9 +22,9 @@ export function AppNavigation() {
           options={{ headerShown: false }}
           component={BottomTabNavigator}
         />
-        <Stack.Screen name="Auth" component={AuthNavigator} />
+        <Stack.Screen name="Auth" component={AuthNavigator} options={{ headerShown: false }}/>
         <Stack.Group>
-          <Stack.Screen name="Notifications" component={NotificationScreen} />
+          <Stack.Screen name="Notifications" component={NotificationScreen} options={{ headerShown: false }}/>
           <Stack.Screen name="FormPost" component={FormPostScreen} />
         </Stack.Group>
       </Stack.Navigator>

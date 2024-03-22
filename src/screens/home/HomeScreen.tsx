@@ -45,6 +45,7 @@ export const HomeScreen = (props: any) => {
           </View>
         </View>
       </View>
+      <Image source={{uri:'https://i.ytimg.com/vi/f53F3G_7DPA/maxresdefault.jpg'}} className='w-full h-[120px]'/>
       <ScrollView
         contentContainerStyle={{
           paddingBottom: 150,
