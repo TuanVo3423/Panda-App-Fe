@@ -45,12 +45,15 @@ export const HomeScreen = (props: any) => {
           </View>
         </View>
       </View>
+      
       <ScrollView
         contentContainerStyle={{
           paddingBottom: 150,
           backgroundColor: 'white',
         }}
       >
+        {/* Ads  */}
+        <Image source={{uri:'https://i.ytimg.com/vi/f53F3G_7DPA/maxresdefault.jpg'}} className='w-full h-[120px]'/>
         {/* Category   */}
         <Category />
         {/* Post */}
