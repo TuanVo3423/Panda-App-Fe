@@ -9,6 +9,8 @@ import { RootTabParamList, RootTabScreenProps } from './data';
 // import { Home } from '@screens/home';
 import { HomeScreen } from '@screens/home/HomeScreen';
 import { MenuScreen } from '@screens/menu';
+import { View } from 'react-native';
+import { EvilIcons } from '@expo/vector-icons';
 
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
@@ -69,9 +71,20 @@ export default function BottomTabNavigator() {
       <BottomTab.Screen
         name="Community"
         component={CommunityScreen}
-        options={{
+        options={({ navigation }: RootTabScreenProps<'Community'>) => ({
           // headerShown: false,
-          // title: 'Community',
+          title: 'Community',
+          headerRight: () => (
+            <View className="flex flex-row space-x-2 px-4">
+              <Ionicons name={'search-outline'} size={25} color={'gray'} />
+              <EvilIcons name="user" size={32} color="gray" />
+              <Ionicons
+                name={'notifications-outline'}
+                size={25}
+                color={'gray'}
+              />
+            </View>
+          ),
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               name={
@@ -83,7 +96,7 @@ export default function BottomTabNavigator() {
           ),
           tabBarInactiveTintColor: 'gray',
           tabBarActiveTintColor: 'gray',
-        }}
+        })}
       />
 
       <BottomTab.Screen

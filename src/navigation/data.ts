@@ -8,7 +8,7 @@ export type AppStackParamList = {
   Auth: undefined;
   Modal: undefined;
   Notifications: undefined;
-  FormPost: undefined;
+  FormPost: { tab_topic: number };
 };
 
 // app props types
@@ -34,3 +34,13 @@ export type RootTabScreenProps<Screen extends keyof RootTabParamList> =
 export type AuthStackParamList = {
   Login: undefined;
 };
+
+// app props types
+export type AuthStackScreenProps<Screen extends keyof AuthStackParamList> =
+  CompositeScreenProps<
+    BottomTabScreenProps<AuthStackParamList, Screen>,
+    NativeStackScreenProps<AppStackParamList>
+  >;
+
+
+

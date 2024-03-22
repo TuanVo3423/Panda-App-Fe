@@ -3,11 +3,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import { AuthNavigator } from './AuthNavigator';
 import useAuthenticatedStore from '@stores/useAuthenticatedStore';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { AppStackParamList } from './data';
+import { AppStackParamList, AppStackScreenProps } from './data';
 // import { ModalScreen } from '@screens/home';
 import BottomTabNavigator from './BottomTabNavigator';
 import { NotificationScreen } from '@screens/home/NotificationScreen';
 import { FormPostScreen } from '@screens/community/FormPostScreen';
+import { TopicFilters } from '@components/community/data';
 
 const Stack = createNativeStackNavigator<AppStackParamList>();
 export function AppNavigation() {
@@ -25,7 +26,13 @@ export function AppNavigation() {
         <Stack.Screen name="Auth" component={AuthNavigator} options={{ headerShown: false }}/>
         <Stack.Group>
           <Stack.Screen name="Notifications" component={NotificationScreen} options={{ headerShown: false }}/>
-          <Stack.Screen name="FormPost" component={FormPostScreen} />
+          <Stack.Screen
+            options={({ route }: AppStackScreenProps<'FormPost'>) => ({
+              headerShown: false,
+            })}
+            name="FormPost"
+            component={FormPostScreen}
+          />
         </Stack.Group>
       </Stack.Navigator>
     </NavigationContainer>
