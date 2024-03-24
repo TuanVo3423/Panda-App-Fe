@@ -21,11 +21,11 @@ export const MenuScreen = (props: any) => {
   };
   return (
     <SafeAreaView className="bg-white ">
-      <View className="rounded-md px-3 bg-gray-100 h-20 w-100 justify-between  flex-row  items-center  mx-5  ">
+      <View className="rounded-md px-3 bg-gray-100 h-20 w-100 justify-between  flex-row  items-center  mx-5   ">
         <View className="flex-row items-center ">
           <Image
             source={{
-              uri: 'https://static.vecteezy.com/system/resources/previews/019/046/339/original/gold-coin-money-symbol-icon-png.png',
+              uri: 'https://static.vecteezy.com/system/resources/previews/004/487/805/original/silhouette-of-a-male-head-in-profile-on-a-white-background-avatar-design-free-vector.jpg',
             }}
             className="h-10 w-10 mr-2 rounded-full "
           />
