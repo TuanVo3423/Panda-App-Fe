@@ -8,6 +8,7 @@ export type AppStackParamList = {
   Auth: undefined;
   Modal: undefined;
   Notifications: undefined;
+  Profile: undefined;
   FormPost: { tab_topic: number };
 };
 

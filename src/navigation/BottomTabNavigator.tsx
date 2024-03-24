@@ -45,6 +45,7 @@ export default function BottomTabNavigator() {
         component={ExploreScreen}
         options={{
           title: 'Explore',
+          headerShown: false,
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               name={focused ? 'albums' : 'albums-outline'}
