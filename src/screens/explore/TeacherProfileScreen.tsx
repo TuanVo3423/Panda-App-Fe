@@ -7,7 +7,7 @@ import Review from '@components/Explore/Review';
 
 type Props = {};
 
-export const ProfileScreen = (props: Props) => {
+export const TeacherProfileScreen = (props: Props) => {
   return (
     <SafeAreaView className="bg-white">
       <ScrollView

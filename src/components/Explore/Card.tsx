@@ -27,7 +27,7 @@ export const Card: React.FC<CardProps> = ({
 
   const handleImagePress = () => {
     // Chuyển đến màn hình khác khi click vào hình ảnh
-    navigation.navigate('Profile');
+    navigation.navigate('TeacherProfile');
   };
 
   let rankColor = ''; // Màu sắc dựa vào rank

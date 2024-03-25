@@ -1,24 +1,16 @@
-import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { AuthNavigator } from './AuthNavigator';
-import useAuthenticatedStore from '@stores/useAuthenticatedStore';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import {
-  AppStackParamList,
-  AppStackScreenProps,
-  AuthStackScreenProps,
-  RootTabScreenProps,
-} from './data';
+import useAuthenticatedStore from '@stores/useAuthenticatedStore';
+import React from 'react';
+import { AuthNavigator } from './AuthNavigator';
+import { AppStackParamList, AppStackScreenProps } from './data';
 // import { ModalScreen } from '@screens/home';
-import BottomTabNavigator from './BottomTabNavigator';
-import { NotificationScreen } from '@screens/home/NotificationScreen';
-import { ProfileScreen } from '@screens/explore/ProfileScreen';
-import { FormPostScreen } from '@screens/community/FormPostScreen';
-import { TopicFilters } from '@components/community/data';
-import { View } from 'native-base';
-import Ionicons from '@expo/vector-icons/Ionicons';
-import { EvilIcons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
+import { FormPostScreen } from '@screens/community/FormPostScreen';
+import { NotificationScreen } from '@screens/home/NotificationScreen';
+import { View } from 'native-base';
+import BottomTabNavigator from './BottomTabNavigator';
+import { TeacherProfileScreen } from '@screens/explore';
 
 const Stack = createNativeStackNavigator<AppStackParamList>();
 export function AppNavigation() {
@@ -53,8 +45,8 @@ export function AppNavigation() {
           />
         </Stack.Group>
         <Stack.Screen
-          name="Profile"
-          options={({ navigation }: AppStackScreenProps<'Profile'>) => ({
+          name="TeacherProfile"
+          options={({ navigation }: AppStackScreenProps<'TeacherProfile'>) => ({
             // headerShown: false,
             title: 'Teacher Profile',
             headerTitleStyle: {
@@ -67,7 +59,7 @@ export function AppNavigation() {
               </View>
             ),
           })}
-          component={ProfileScreen}
+          component={TeacherProfileScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@expo-google-fonts/inter": "^0.2.2",
+    "@expo/webpack-config": "^19.0.0",
     "@gorhom/bottom-sheet": "^4.6.1",
     "@react-native-async-storage/async-storage": "1.18.2",
     "@react-native-community/checkbox": "^0.5.17",
@@ -46,6 +47,7 @@
     "react-native-tab-view": "^3.5.2",
     "react-native-web": "~0.19.6",
     "react-query": "^3.39.3",
+    "tailwind-rn": "^4.2.0",
     "zustand": "^4.3.9"
   },
   "devDependencies": {
