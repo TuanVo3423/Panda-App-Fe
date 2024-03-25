@@ -1,18 +1,20 @@
+import { AntDesign, MaterialIcons } from '@expo/vector-icons';
+import { AppStackScreenProps } from '@navigation/data';
+import React from 'react';
 import {
+  Image,
   SafeAreaView,
   Text,
-  View,
-  Image,
   TouchableOpacity,
+  View,
 } from 'react-native';
-import React from 'react';
-import { MaterialIcons } from '@expo/vector-icons';
-import { AntDesign } from '@expo/vector-icons';
 
-export const ProfileScreen = (props: any) => {
-  const { navigation } = props;
+export const ProfileScreen = ({
+  navigation,
+  route,
+}: AppStackScreenProps<'Profile'>) => {
   const handleEditProfilePress = () => {
-    navigation.navigate('Home');
+    navigation.navigate('Root');
   };
   return (
     <SafeAreaView className=" bg-white pt-5">

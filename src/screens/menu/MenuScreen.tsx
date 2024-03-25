@@ -4,9 +4,12 @@ import { Text, TouchableOpacity, View, Image, Button } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { MaterialIcons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
+import { RootTabScreenProps } from '@navigation/data';
 
-export const MenuScreen = (props: any) => {
-  const { navigation } = props;
+export const MenuScreen = ({
+  navigation,
+  route,
+}: RootTabScreenProps<'Menu'>) => {
   const handleProfilePress = () => {
     navigation.navigate('Profile');
   };
