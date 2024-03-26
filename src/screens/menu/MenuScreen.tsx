@@ -17,7 +17,7 @@ export const MenuScreen = ({
     navigation.navigate('Capture');
   };
   const handleAskCommunityPress = () => {
-    navigation.navigate('FormPost');
+    navigation.navigate('FormPost', { tab_topic: 1 });
   };
   const handleCommunityPress = () => {
     navigation.navigate('Community');

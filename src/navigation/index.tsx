@@ -11,6 +11,7 @@ import { NotificationScreen } from '@screens/home/NotificationScreen';
 import { View } from 'native-base';
 import BottomTabNavigator from './BottomTabNavigator';
 import { TeacherProfileScreen } from '@screens/explore';
+import { ProfileScreen } from '@screens/profile';
 
 const Stack = createNativeStackNavigator<AppStackParamList>();
 export function AppNavigation() {
@@ -60,6 +61,23 @@ export function AppNavigation() {
             ),
           })}
           component={TeacherProfileScreen}
+        />
+        <Stack.Screen
+          name="Profile"
+          options={({ navigation }: AppStackScreenProps<'Profile'>) => ({
+            // headerShown: false,
+            title: 'Profile',
+            headerTitleStyle: {
+              fontSize: 16,
+            },
+            headerRight: () => (
+              <View className="flex flex-row space-x-2">
+                <AntDesign name="gift" size={24} color="gray" />
+                <AntDesign name="deleteuser" size={24} color="gray" />
+              </View>
+            ),
+          })}
+          component={ProfileScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>
