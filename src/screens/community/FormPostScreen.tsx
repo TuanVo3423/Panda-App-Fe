@@ -18,7 +18,7 @@ export const FormPostScreen = ({
   const { tab_topic } = route.params;
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
-      <Stack mt={10}>
+      <Stack>
         {/* header */}
         <HStack
           p="10px 10px 0px 5px"

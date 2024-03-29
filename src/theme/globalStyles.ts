@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import { colors } from './colors';
 
 export const typography = StyleSheet.create({
@@ -94,5 +94,26 @@ export const formStyles = StyleSheet.create({
   compactInput: {
     width: '100%',
     marginLeft: 12,
+  },
+});
+
+export const deviceSafeAreaDetection = StyleSheet.create({
+  androidSafeArea: {
+    flex: 1,
+    backgroundColor: 'white',
+    paddingTop: Platform.OS === 'android' ? 32 : 0,
+  },
+});
+
+export const headerStyles = StyleSheet.create({
+  style: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: 'white',
+    padding: 16,
+    borderBottomWidth: 1,
+    borderColor: '#BEBEBE',
   },
 });

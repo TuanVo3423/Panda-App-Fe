@@ -5,6 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { MaterialIcons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { RootTabScreenProps } from '@navigation/data';
+import { headerStyles } from '@theme/globalStyles';
 
 export const MenuScreen = ({
   navigation,
@@ -23,7 +24,10 @@ export const MenuScreen = ({
     navigation.navigate('Community');
   };
   return (
-    <SafeAreaView className="bg-white ">
+    <View>
+      <View style={headerStyles.style}>
+        <Text className="text-lg font-semibold">Menu</Text>
+      </View>
       <View className="rounded-md px-3 bg-gray-100 h-20 w-100 justify-between  flex-row  items-center  mx-5   ">
         <View className="flex-row items-center ">
           <Image
@@ -121,6 +125,6 @@ export const MenuScreen = ({
           />
         </TouchableOpacity>
       </View>
-    </SafeAreaView>
+    </View>
   );
 };

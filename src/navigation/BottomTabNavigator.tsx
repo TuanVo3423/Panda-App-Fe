@@ -9,8 +9,9 @@ import { RootTabParamList, RootTabScreenProps } from './data';
 // import { Home } from '@screens/home';
 import { HomeScreen } from '@screens/home/HomeScreen';
 import { MenuScreen } from '@screens/menu';
-import { View } from 'react-native';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { EvilIcons } from '@expo/vector-icons';
+import Feather from '@expo/vector-icons/Feather';
 
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
@@ -73,19 +74,8 @@ export default function BottomTabNavigator() {
         name="Community"
         component={CommunityScreen}
         options={({ navigation }: RootTabScreenProps<'Community'>) => ({
-          // headerShown: false,
           title: 'Community',
-          headerRight: () => (
-            <View className="flex flex-row space-x-2 px-4">
-              <Ionicons name={'search-outline'} size={25} color={'gray'} />
-              <EvilIcons name="user" size={32} color="gray" />
-              <Ionicons
-                name={'notifications-outline'}
-                size={25}
-                color={'gray'}
-              />
-            </View>
-          ),
+          headerShown: false,
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               name={
@@ -104,8 +94,8 @@ export default function BottomTabNavigator() {
         name="Menu"
         component={MenuScreen}
         options={{
-          // headerShown: false,
-          // title: 'Community',
+          headerShown: false,
+
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               name={focused ? 'menu-sharp' : 'menu-outline'}

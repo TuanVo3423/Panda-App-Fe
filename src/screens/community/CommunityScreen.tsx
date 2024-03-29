@@ -11,13 +11,17 @@ import { RootTabScreenProps } from '@navigation/data';
 import { Button, Text } from 'native-base';
 import * as React from 'react';
 import { useCallback, useRef } from 'react';
+import { View } from 'react-native';
 import { useWindowDimensions } from 'react-native';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import { EvilIcons } from '@expo/vector-icons';
 import {
   SceneMap,
   TabBar,
   TabBarIndicator,
   TabView,
 } from 'react-native-tab-view';
+import { headerStyles } from '@theme/globalStyles';
 
 const renderScene = SceneMap({
   life: () => <LifeTab />,
@@ -46,6 +50,14 @@ export const CommunityScreen = ({
 
   return (
     <>
+      <View style={headerStyles.style}>
+        <Text className="text-lg font-semibold">Community</Text>
+        <View className="flex flex-row space-x-2">
+          <Ionicons name={'search-outline'} size={25} color={'gray'} />
+          <EvilIcons name="user" size={32} color="gray" />
+          <Ionicons name={'notifications-outline'} size={25} color={'gray'} />
+        </View>
+      </View>
       <TabView
         renderTabBar={(props) => (
           <TabBar

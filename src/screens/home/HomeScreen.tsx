@@ -18,11 +18,11 @@ import Quizz from '@components/Home/Quizz';
 import TrollFriends from '@components/Home/TrollFriends';
 import Quotes from '@components/Home/Quotes';
 import Trend from '@components/Home/Trend';
+import { headerStyles } from '@theme/globalStyles';
 export const HomeScreen = (props: any) => {
   const { navigation } = props;
   return (
-    <SafeAreaView className="bg-transparent">
-      {/* Header */}
+    <View>
       <View className="bg-white py-3">
         <View className="flex-row items-center justify-center mx-5">
           <Text className="flex-1">LOGO PANDA</Text>
@@ -45,7 +45,6 @@ export const HomeScreen = (props: any) => {
           </View>
         </View>
       </View>
-      
       <ScrollView
         contentContainerStyle={{
           paddingBottom: 150,
@@ -53,7 +52,12 @@ export const HomeScreen = (props: any) => {
         }}
       >
         {/* Ads  */}
-        <Image source={{uri:'https://i.ytimg.com/vi/f53F3G_7DPA/maxresdefault.jpg'}} className='w-full h-[120px]'/>
+        <Image
+          source={{
+            uri: 'https://i.ytimg.com/vi/f53F3G_7DPA/maxresdefault.jpg',
+          }}
+          className="w-full h-[120px]"
+        />
         {/* Category   */}
         <Category />
         {/* Post */}
@@ -71,6 +75,6 @@ export const HomeScreen = (props: any) => {
         {/* Quotes  */}
         <Quotes content="Miet mai quay tay van may se toi" />
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 };

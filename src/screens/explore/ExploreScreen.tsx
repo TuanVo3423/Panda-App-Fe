@@ -2,6 +2,7 @@ import React from 'react';
 import { SafeAreaView, Text, View, ScrollView } from 'react-native';
 import { Card } from '@components/Explore/Card';
 import { AppStackScreenProps, RootTabScreenProps } from '@navigation/data';
+import { headerStyles } from '@theme/globalStyles';
 
 type Props = {};
 
@@ -12,10 +13,8 @@ export const ExploreScreen = ({
   return (
     <SafeAreaView className="bg-transparent">
       {/* Header */}
-      <View className="bg-white py-3">
-        <View className="flex-row items-center justify-center mx-6 mt-1 mb-1">
-          <Text className="flex-1 font-bold text-2xl">Explore</Text>
-        </View>
+      <View style={headerStyles.style}>
+        <Text className="text-lg font-semibold">Explore</Text>
       </View>
 
       <ScrollView
