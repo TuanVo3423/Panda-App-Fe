@@ -9,9 +9,6 @@ import { RootTabParamList, RootTabScreenProps } from './data';
 // import { Home } from '@screens/home';
 import { HomeScreen } from '@screens/home/HomeScreen';
 import { MenuScreen } from '@screens/menu';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
-import { EvilIcons } from '@expo/vector-icons';
-import Feather from '@expo/vector-icons/Feather';
 
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
@@ -61,13 +58,11 @@ export default function BottomTabNavigator() {
       <BottomTab.Screen
         name="Capture"
         component={CaptureScreen}
-        options={
-          {
-            // headerShown: false,
-            // title: 'Community',
-            // tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          }
-        }
+        options={{
+          headerShown: false,
+          // title: 'Community',
+          // tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+        }}
       />
 
       <BottomTab.Screen
