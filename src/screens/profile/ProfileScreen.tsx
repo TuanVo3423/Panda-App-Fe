@@ -107,7 +107,7 @@ export const ProfileScreen = ({
       </View>
       <View className="pt-7 px-5 pb-5 ">
         <Text className="text-lg font-bold">My activitives</Text>
-        <TouchableOpacity className="pt-5 flex-row items-center ">
+        <TouchableOpacity className="pt-5 flex-row items-center " onPress={() => navigation.navigate('Activity')}>
           <Text className="text-lg  flex-1">My Activities in Community</Text>
           <AntDesign
             name="right"

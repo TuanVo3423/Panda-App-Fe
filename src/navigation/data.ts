@@ -8,6 +8,7 @@ export type AppStackParamList = {
   Auth: undefined;
   Modal: undefined;
   Notifications: undefined;
+  Activity: undefined;
   Profile: undefined;
   TeacherProfile: undefined;
   FormPost: { tab_topic: number };
