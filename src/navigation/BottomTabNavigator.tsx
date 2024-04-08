@@ -43,6 +43,7 @@ export default function BottomTabNavigator() {
         component={ExploreScreen}
         options={{
           title: 'Explore',
+          headerShown: false,
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               name={focused ? 'albums' : 'albums-outline'}
@@ -57,21 +58,19 @@ export default function BottomTabNavigator() {
       <BottomTab.Screen
         name="Capture"
         component={CaptureScreen}
-        options={
-          {
-            // headerShown: false,
-            // title: 'Community',
-            // tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          }
-        }
+        options={{
+          headerShown: false,
+          // title: 'Community',
+          // tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+        }}
       />
 
       <BottomTab.Screen
         name="Community"
         component={CommunityScreen}
-        options={{
-          // headerShown: false,
-          // title: 'Community',
+        options={({ navigation }: RootTabScreenProps<'Community'>) => ({
+          title: 'Community',
+          headerShown: false,
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               name={
@@ -83,15 +82,15 @@ export default function BottomTabNavigator() {
           ),
           tabBarInactiveTintColor: 'gray',
           tabBarActiveTintColor: 'gray',
-        }}
+        })}
       />
 
       <BottomTab.Screen
         name="Menu"
         component={MenuScreen}
         options={{
-          // headerShown: false,
-          // title: 'Community',
+          headerShown: false,
+
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               name={focused ? 'menu-sharp' : 'menu-outline'}

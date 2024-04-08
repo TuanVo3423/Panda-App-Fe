@@ -5,7 +5,7 @@ import BottomSheet, {
   BottomSheetBackdrop,
   BottomSheetView,
 } from '@gorhom/bottom-sheet';
-import { AppStackScreenProps } from '@navigation/data';
+import { AuthStackScreenProps } from '@navigation/data';
 import useAuthenticatedStore from '@stores/useAuthenticatedStore';
 import React, { useCallback, useRef, useState } from 'react';
 import {
@@ -17,7 +17,10 @@ import {
   View,
 } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-export function LoginScreen({ navigation }: AppStackScreenProps<'Auth'>) {
+export function LoginScreen({
+  navigation,
+  route,
+}: AuthStackScreenProps<'Login'>) {
   const sheetRef = useRef<BottomSheet>(null);
   const sheetRef1 = useRef<BottomSheet>(null);
   const { setIsAuthenticated } = useAuthenticatedStore();

@@ -1,14 +1,14 @@
-import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { AuthNavigator } from './AuthNavigator';
-import useAuthenticatedStore from '@stores/useAuthenticatedStore';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { AppStackParamList } from './data';
+import useAuthenticatedStore from '@stores/useAuthenticatedStore';
+import React from 'react';
+import { AuthNavigator } from './AuthNavigator';
+import { AppStackParamList, AppStackScreenProps } from './data';
 // import { ModalScreen } from '@screens/home';
-import BottomTabNavigator from './BottomTabNavigator';
+import { AntDesign } from '@expo/vector-icons';
+import { FormPostScreen } from '@screens/community/FormPostScreen';
 import { NotificationScreen } from '@screens/home/NotificationScreen';
 import { FormPostScreen } from '@screens/community/FormPostScreen';
-import { ProfileScreen } from '@screens/profile/ProfileScreen';
 
 const Stack = createNativeStackNavigator<AppStackParamList>();
 export function AppNavigation() {
@@ -27,7 +27,6 @@ export function AppNavigation() {
         <Stack.Group>
           <Stack.Screen name="Notifications" component={NotificationScreen} />
           <Stack.Screen name="FormPost" component={FormPostScreen} />
-          <Stack.Screen name="Profile" component={ProfileScreen} />
         </Stack.Group>
       </Stack.Navigator>
     </NavigationContainer>

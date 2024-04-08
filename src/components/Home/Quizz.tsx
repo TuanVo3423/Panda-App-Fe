@@ -1,7 +1,7 @@
-import React from 'react';
-import { SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
-import Question from './Question';
 import Feather from '@expo/vector-icons/Feather';
+import React from 'react';
+import { Text, TouchableOpacity, View } from 'react-native';
+import Question from './Question';
 
 const Quizz = () => {
   return (
@@ -15,7 +15,7 @@ const Quizz = () => {
         answers={['Dinh Thi Dong Phuong', 'Dang Dai Tho', 'Huynh Cong Phap']}
         correctAnswer="Dang Dai Tho"
       />
-      
+
       <TouchableOpacity className='bg-orange-500 flex items-center justify-center rounded-b-xl h-14'>
         <Text className='font-semibold text-white text-center'>Hoc tu vung nang cao</Text>
       </TouchableOpacity>
