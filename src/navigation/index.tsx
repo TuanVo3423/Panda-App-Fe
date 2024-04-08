@@ -16,6 +16,7 @@ import { SafeAreaView, Text } from 'react-native';
 import { deviceSafeAreaDetection } from '@theme/globalStyles';
 import Feather from '@expo/vector-icons/Feather';
 import ActivityScreen from '@screens/profile/ActivityScreen';
+import { MyProfileScreen } from '@screens/profile/MyProfileScreen';
 
 const Stack = createNativeStackNavigator<AppStackParamList>();
 export function AppNavigation() {
@@ -51,7 +52,6 @@ export function AppNavigation() {
               name="FormPost"
               component={FormPostScreen}
             />
-           
           </Stack.Group>
           <Stack.Screen
             name="TeacherProfile"
@@ -101,33 +101,56 @@ export function AppNavigation() {
             })}
             component={ProfileScreen}
           />
-           <Stack.Screen
-              options={({
-                navigation,
-              }: AppStackScreenProps<'Activity'>) => ({
-                headerShown: true,
-                title: 'Activity Community',
-                header: () => (
-                  <View className="bg-white py-4 mx-5">
-                    <View className=' flex-row items-center space-x-5'>
-                      <Feather
+          <Stack.Screen
+            options={({ navigation }: AppStackScreenProps<'MyProfile'>) => ({
+              headerShown: true,
+              title: 'My Profile',
+              header: () => (
+                <View className="bg-white py-4 mx-5">
+                  <View className=" flex-row items-center space-x-5">
+                    <Feather
                       name="chevron-left"
                       size={28}
                       className=""
                       onPress={() => navigation.goBack()}
                     />
-                    <Text className="text-lg font-regular">My Activity In Community</Text>
-                    </View>
-                    
+                    <Text className="text-lg font-regular">My Profile</Text>
                   </View>
-                ),
-                headerTitleStyle: {
-                  fontSize: 16,
-                },
-              })}
-              name="Activity"
-              component={ActivityScreen}
-            />
+                </View>
+              ),
+              headerTitleStyle: {
+                fontSize: 16,
+              },
+            })}
+            name="MyProfile"
+            component={MyProfileScreen}
+          />
+          <Stack.Screen
+            options={({ navigation }: AppStackScreenProps<'Activity'>) => ({
+              headerShown: true,
+              title: 'Activity Community',
+              header: () => (
+                <View className="bg-white py-4 mx-5">
+                  <View className=" flex-row items-center space-x-5">
+                    <Feather
+                      name="chevron-left"
+                      size={28}
+                      className=""
+                      onPress={() => navigation.goBack()}
+                    />
+                    <Text className="text-lg font-regular">
+                      My Activity In Community
+                    </Text>
+                  </View>
+                </View>
+              ),
+              headerTitleStyle: {
+                fontSize: 16,
+              },
+            })}
+            name="Activity"
+            component={ActivityScreen}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>

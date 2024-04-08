@@ -1,6 +1,6 @@
 import { AntDesign, MaterialIcons } from '@expo/vector-icons';
 import { AppStackScreenProps } from '@navigation/data';
-import React from 'react';
+
 import {
   Image,
   SafeAreaView,
@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import React from 'react';
 
 export const ProfileScreen = ({
   navigation,
@@ -107,7 +108,10 @@ export const ProfileScreen = ({
       </View>
       <View className="pt-7 px-5 pb-5 ">
         <Text className="text-lg font-bold">My activitives</Text>
-        <TouchableOpacity className="pt-5 flex-row items-center " onPress={() => navigation.navigate('Activity')}>
+        <TouchableOpacity
+          className="pt-5 flex-row items-center "
+          onPress={() => navigation.navigate('Activity')}
+        >
           <Text className="text-lg  flex-1">My Activities in Community</Text>
           <AntDesign
             name="right"

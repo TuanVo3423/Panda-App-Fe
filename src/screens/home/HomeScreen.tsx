@@ -36,7 +36,11 @@ export const HomeScreen = (props: any) => {
               />
               <Text className="text-[15px] font-semibold">Xu cua toi</Text>
             </TouchableOpacity>
-            <Feather name="user" size={22} />
+            <Feather
+              name="user"
+              size={22}
+              onPress={() => navigation.navigate('MyProfile')}
+            />
             <Feather
               onPress={() => navigation.navigate('Notifications')}
               name="bell"

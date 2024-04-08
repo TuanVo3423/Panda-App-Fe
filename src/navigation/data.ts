@@ -10,6 +10,7 @@ export type AppStackParamList = {
   Notifications: undefined;
   Activity: undefined;
   Profile: undefined;
+  MyProfile: undefined;
   TeacherProfile: undefined;
   FormPost: { tab_topic: number };
 };
@@ -44,6 +45,3 @@ export type AuthStackScreenProps<Screen extends keyof AuthStackParamList> =
     BottomTabScreenProps<AuthStackParamList, Screen>,
     NativeStackScreenProps<AppStackParamList>
   >;
-
-
-
