@@ -9,6 +9,7 @@ import {
   Text,
   TextInput,
 } from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
 export const MyProfileScreen = ({
   navigation,
   route,
@@ -16,14 +17,33 @@ export const MyProfileScreen = ({
   const [username, setUsername] = React.useState('');
   const [curriculum, setCurriculum] = React.useState('');
   const [statusmessage, setStatusmessage] = React.useState('');
+  const [image, setImage] = React.useState<string>('');
+
+  const pickImage = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+      exif: true,
+    });
+
+    if (result.assets === null) return;
+    else {
+      setImage(result.assets[0].uri);
+    }
+  };
 
   return (
     <SafeAreaView>
-      <View className="h-40 w-100 bg-white mx-5 border-gray-300 border-2 justify-center items-center ">
-        <TouchableOpacity>
+      <View className="h-40 w-100 bg-white mx-5 border-gray-300 border-2 justify-center items-center mt-4">
+        <TouchableOpacity onPress={() => pickImage()}>
           <Image
             source={{
-              uri: 'https://th.bing.com/th/id/OIP.89QM06UFSCJIYwMiuqxEXQAAAA?w=360&h=422&rs=1&pid=ImgDetMain',
+              uri: image
+                ? image
+                : 'https://th.bing.com/th/id/OIP.89QM06UFSCJIYwMiuqxEXQAAAA?w=360&h=422&rs=1&pid=ImgDetMain',
             }}
             className=" w-20 h-20 rounded-full"
           />

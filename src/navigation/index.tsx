@@ -8,7 +8,7 @@ import { AppStackParamList, AppStackScreenProps } from './data';
 import { AntDesign } from '@expo/vector-icons';
 import { FormPostScreen } from '@screens/community/FormPostScreen';
 import { NotificationScreen } from '@screens/home/NotificationScreen';
-import { View } from 'native-base';
+import { HStack, View } from 'native-base';
 import BottomTabNavigator from './BottomTabNavigator';
 import { TeacherProfileScreen } from '@screens/explore';
 import { ProfileScreen } from '@screens/profile';
@@ -78,24 +78,34 @@ export function AppNavigation() {
               headerTitleStyle: {
                 fontSize: 16,
               },
-              // headerRight: () => (
-
-              // ),
             })}
             component={TeacherProfileScreen}
           />
           <Stack.Screen
             name="Profile"
             options={({ navigation }: AppStackScreenProps<'Profile'>) => ({
-              // headerShown: false,
+              headerShown: true,
               title: 'Profile',
               headerTitleStyle: {
                 fontSize: 16,
               },
-              headerRight: () => (
-                <View className="flex flex-row space-x-2">
-                  <AntDesign name="gift" size={24} color="gray" />
-                  <AntDesign name="deleteuser" size={24} color="gray" />
+              header: () => (
+                <View className="bg-white py-4 mx-5">
+                  <View className=" flex-row items-center justify-between space-x-5">
+                    <HStack space={4}>
+                      <Feather
+                        name="chevron-left"
+                        size={28}
+                        className=""
+                        onPress={() => navigation.goBack()}
+                      />
+                      <Text className="text-lg font-regular">Profile</Text>
+                    </HStack>
+                    <View className="flex flex-row space-x-2">
+                      <AntDesign name="gift" size={24} color="gray" />
+                      <AntDesign name="deleteuser" size={24} color="gray" />
+                    </View>
+                  </View>
                 </View>
               ),
             })}

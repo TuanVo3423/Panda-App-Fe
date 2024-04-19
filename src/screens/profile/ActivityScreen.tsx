@@ -1,6 +1,6 @@
 import { CommentTab, LikeTab, PostTab } from '@components/profile';
 import { AntDesign } from '@expo/vector-icons';
-import React, { useState } from 'react';
+import React from 'react';
 import { Image, Text, View, useWindowDimensions } from 'react-native';
 import { ProgressBar } from 'react-native-paper';
 import {
@@ -24,7 +24,6 @@ const ActivityScreen = () => {
   ]);
   const layout = useWindowDimensions();
   const TAB_MARGIN = 2;
-  const [selectedTab, setSelectedTab] = useState('Post');
   return (
     <View className="bg-white border-t-[0.2px] border-gray-400 h-full">
       <View className="flex-row items-center space-x-5 p-5">
@@ -39,7 +38,7 @@ const ActivityScreen = () => {
           <Text>Chim dai 10 cm thich tap Gym</Text>
         </View>
       </View>
-      <View className="border-[3px] bg-gray-100 border-gray-400 p-5 mx-5 flex-col space-y-5">
+      <View className="border-[1px] rounded-sm bg-gray-100 border-gray-400 p-5 mx-5 flex-col space-y-5">
         <View className="flex-row items-center justify-between">
           <View className="flex-row items-center space-x-3">
             <Text className="text-lg text-gray-500 font-semibold">

@@ -15,7 +15,7 @@ export const ProfileScreen = ({
   route,
 }: AppStackScreenProps<'Profile'>) => {
   const handleEditProfilePress = () => {
-    navigation.navigate('Root');
+    navigation.navigate('MyProfile');
   };
   return (
     <SafeAreaView className=" bg-white pt-5">
