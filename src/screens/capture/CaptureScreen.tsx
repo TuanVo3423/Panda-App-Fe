@@ -1,24 +1,39 @@
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign, Feather } from '@expo/vector-icons';
 import { headerStyles } from '@theme/globalStyles';
+import { handleUploadImage } from '@utils/cloudinary';
 import * as ImagePicker from 'expo-image-picker';
-import { Button, Center, HStack, Image, Text, VStack, View } from 'native-base';
-import { useState } from 'react';
-import { Feather } from '@expo/vector-icons';
+import {
+  Button,
+  HStack,
+  Image,
+  Text,
+  VStack,
+  View,
+  useToast,
+} from 'native-base';
+import React, { useState } from 'react';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export function CaptureScreen() {
   const [image, setImage] = useState<string>('');
+  const [ImagePickerObject, setImagePickerObject] =
+    useState<ImagePicker.ImagePickerResult>();
+  const [isUploadingImage, setIsUploadingImage] = useState(false);
+  const toast = useToast();
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
+      aspect: [4, 3],
       quality: 1,
+      exif: true,
     });
 
     if (result.assets === null) return;
     else {
+      setImagePickerObject(result);
       setImage(result.assets[0].uri);
     }
   };
@@ -31,7 +46,23 @@ export function CaptureScreen() {
 
     if (result.assets === null) return;
     else {
+      setImagePickerObject(result);
       setImage(result.assets[0].uri);
+    }
+  };
+
+  const handleUploadToCloudinary = async () => {
+    try {
+      setIsUploadingImage(true);
+      const data = await handleUploadImage(
+        ImagePickerObject as ImagePicker.ImagePickerSuccessResult
+      );
+      toast.show({
+        description: `Upload Scuccessful. Image URL: ${data.url}`,
+      });
+      setIsUploadingImage(false);
+    } catch (err) {
+      console.log('err: ', err);
     }
   };
 
@@ -115,9 +146,13 @@ export function CaptureScreen() {
     <View>
       <View style={headerStyles.style}>
         <Text className="text-lg font-semibold">Capture Question</Text>
-        <Button isDisabled={image ? false : true} variant="outline">
+        <Button
+          onPress={() => handleUploadToCloudinary()}
+          isLoading={isUploadingImage}
+          variant="outline"
+        >
           <Text fontSize="16px" fontWeight="bold" color="blue.600">
-            Continue
+            Upload To Cloud
           </Text>
         </Button>
       </View>
