@@ -24,8 +24,8 @@ export const LanguagueCheck: React.FC<LanguageProps> = ({
       <RadioButton.Group onValueChange={onValueChange} value={value}>
         <RadioButton.Android
           value={id}
-          color="orange"
-          uncheckedColor="orange"
+          color="#62929E"
+          uncheckedColor="#62929E"
           status={value === id ? 'checked' : 'unchecked'}
         />
       </RadioButton.Group>

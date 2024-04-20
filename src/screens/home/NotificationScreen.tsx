@@ -70,7 +70,7 @@ export const NotificationScreen = (props: any) => {
             <Checkbox.Android
               status={checkboxStates['noti1'] ? 'checked' : 'unchecked'}
               onPress={() => handleCheckboxChange('noti1')}
-              color="orange"
+              color="#62929E"
             />
             <View className="flex-1">
               <Noti />
@@ -84,7 +84,7 @@ export const NotificationScreen = (props: any) => {
             <Checkbox.Android
               status={checkboxStates['noti2'] ? 'checked' : 'unchecked'}
               onPress={() => handleCheckboxChange('noti2')}
-              color="orange"
+              color="#62929E"
             />
             <View className="flex-1">
               <Noti />
@@ -98,7 +98,7 @@ export const NotificationScreen = (props: any) => {
             <Checkbox.Android
               status={checkboxStates['noti3'] ? 'checked' : 'unchecked'}
               onPress={() => handleCheckboxChange('noti3')}
-              color="orange"
+              color="#62929E"
             />
             <View className="flex-1">
               <Noti />
@@ -114,7 +114,7 @@ export const NotificationScreen = (props: any) => {
             <Checkbox.Android
               status={checkboxStates['all'] ? 'checked' : 'unchecked'}
               onPress={() => handleSelectAllCheckboxes(!checkboxStates['all'])}
-              color="orange"
+              color="#62929E"
             />
           </View>
 

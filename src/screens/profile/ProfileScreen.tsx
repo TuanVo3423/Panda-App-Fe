@@ -4,6 +4,7 @@ import { AppStackScreenProps } from '@navigation/data';
 import {
   Image,
   SafeAreaView,
+  ScrollView,
   Text,
   TouchableOpacity,
   View,
@@ -19,6 +20,7 @@ export const ProfileScreen = ({
   };
   return (
     <SafeAreaView className=" bg-white pt-5">
+      <ScrollView>
       <View className="  rounded-t-lg  px-3 bg-gray-100 h-20 w-100 justify-between  flex-row  items-center  mx-5">
         <View className="flex-row items-center">
           <Image
@@ -130,6 +132,8 @@ export const ProfileScreen = ({
           />
         </TouchableOpacity>
       </View>
+      </ScrollView>
+      
     </SafeAreaView>
   );
 };
