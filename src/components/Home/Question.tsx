@@ -26,8 +26,8 @@ const Question: React.FC<QuestionProps> = ({ question, answers, correctAnswer })
         let bgColor = '';
         if (hasAnswered) {
           bgColor = selectedAnswer === answer
-            ? answer === correctAnswer ? 'bg-green-500' : 'bg-red-500'
-            : answer === correctAnswer ? 'bg-green-500' : '';
+            ? answer === correctAnswer ? 'bg-green-600' : 'bg-red-600'
+            : answer === correctAnswer ? 'bg-green-600' : '';
         }
         return (
           <TouchableOpacity

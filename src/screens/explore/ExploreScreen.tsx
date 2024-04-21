@@ -11,19 +11,19 @@ export const ExploreScreen = ({
   route,
 }: RootTabScreenProps<'Explore'>) => {
   return (
-    <SafeAreaView className="bg-transparent">
+    <SafeAreaView className="bg-white">
       {/* Header */}
       <View style={headerStyles.style}>
         <Text className="text-lg font-semibold">Explore</Text>
       </View>
 
       <ScrollView
-        contentContainerStyle={{
-          paddingBottom: 50,
-          backgroundColor: 'white',
-        }}
+       contentContainerStyle={{
+        paddingBottom: 50,
+        backgroundColor: 'white',
+      }}
       >
-        <View className="mt-5 mx-5 border-gray-200 mb-5 pb-3">
+        <View className="mt-5 mx-5 mb-5 pb-3">
           <Card
             navigation={navigation}
             avaUri="https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/09/meme-che-15.jpg"

@@ -13,9 +13,9 @@ const Trend = () => {
           </View>
           <Feather name='chevron-right' size={25} />
         </View>
-        <Post avaUri='https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/09/meme-che-15.jpg' userName='Phuc 20cm' status='Gay nhung ma chim dai' imgUri='https://pbs.twimg.com/media/F2vLomXaAAAgOGr.jpg' />
-        <Post avaUri='https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/09/meme-che-15.jpg' userName='Phuc 20cm' status='Gay nhung ma chim dai' imgUri='https://pbs.twimg.com/media/F2vLomXaAAAgOGr.jpg' />
-        <Post avaUri='https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/09/meme-che-15.jpg' userName='Phuc 20cm' status='Gay nhung ma chim dai' imgUri='https://pbs.twimg.com/media/F2vLomXaAAAgOGr.jpg' />
+        <Post avaUri='https://sm.ign.com/ign_nordic/cover/a/avatar-gen/avatar-generations_prsz.jpg' userName='Phuc Xinh' status='Can cu bu sieng nang' imgUri='https://sm.ign.com/ign_nordic/cover/a/avatar-gen/avatar-generations_prsz.jpg' />
+        <Post avaUri='https://sm.ign.com/ign_nordic/cover/a/avatar-gen/avatar-generations_prsz.jpg' userName='Phuc Xinh' status='Can cu bu sieng nang' imgUri='https://sm.ign.com/ign_nordic/cover/a/avatar-gen/avatar-generations_prsz.jpg' />
+        <Post avaUri='https://sm.ign.com/ign_nordic/cover/a/avatar-gen/avatar-generations_prsz.jpg' userName='Phuc Xinh' status='Can cu bu sieng nang' imgUri='https://sm.ign.com/ign_nordic/cover/a/avatar-gen/avatar-generations_prsz.jpg' />
       </View>
   )
 }

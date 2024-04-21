@@ -39,13 +39,13 @@ export const Feedback: React.FC<FeedbackProps> = ({
 
             </View>
             <View className='flex-row space-x-3 top-7'>
-                <View className='bg-blue-500 rounded-xl p-2'>
+                <View className='bg-[#62929E] rounded-xl p-2'>
                     <Text className='font-semibold text-white'>{tag1}</Text>
                 </View>
-                <View className='bg-blue-500 rounded-xl p-2'>
+                <View className='bg-[#62929E] rounded-xl p-2'>
                     <Text className='font-semibold text-white'>{tag2}</Text>
                 </View>
-                <View className='bg-blue-500 rounded-xl p-2'>
+                <View className='bg-[#62929E] rounded-xl p-2'>
                     <Text className='font-semibold text-white'>{tag3}</Text>
                 </View>
             </View>

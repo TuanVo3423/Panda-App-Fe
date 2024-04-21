@@ -19,12 +19,12 @@ export const Statistical: React.FC<StatisticalProps> = ({
     <View className="flex-col border-b-[0.5px] border-gray-300 rounded-lg py-2">
       <View className="flex-row border-gray-300 rounded-lg">
         <View className="items-center justify-center flex-col mx-3 flex-1">
-          <Text className="text-3xl font-bold text-sky-500 py-2">
+          <Text className="text-3xl font-bold text-[#62929D] py-2">
             {rank !== '' ? rank : 'Beginner'}
           </Text>
         </View>
         <View className="items-center justify-center flex-col mx-3 flex-1">
-          <Text className="text-3xl font-bold text-sky-500 py-2">{answer}</Text>
+          <Text className="text-3xl font-bold text-[#62929D] py-2">{answer}</Text>
         </View>
       </View>
       <View className="flex-row border-gray-300 rounded-lg pb-3 mb-2">
@@ -41,10 +41,10 @@ export const Statistical: React.FC<StatisticalProps> = ({
             value={Number(rating)}
             duration={2000}
             radius={50}
-            progressValueColor={'#38bdf8'}
-            activeStrokeColor={'#38bdf8'}
+            progressValueColor={'#62929D'}
+            activeStrokeColor={'#62929D'}
             maxValue={5}
-            titleColor={'#38bdf8'}
+            titleColor={'#62929D'}
             progressValueFontSize={32}
             inActiveStrokeWidth={5}
             activeStrokeWidth={5}
@@ -57,7 +57,7 @@ export const Statistical: React.FC<StatisticalProps> = ({
           />
         </View>
         <View className="items-center justify-center flex-col mx-3 flex-1">
-          <Text className="text-3xl font-bold text-sky-500 py-2">
+          <Text className="text-3xl font-bold text-[#62929D] py-2">
             {measure !== '' ? measure : '-'}
           </Text>
         </View>

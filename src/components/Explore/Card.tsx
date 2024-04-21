@@ -52,7 +52,7 @@ export const Card: React.FC<CardProps> = ({
       <TouchableOpacity onPress={handleImagePress}>
         <Image
           source={{ uri: avaUri }}
-          className="rounded-full h-16 w-16 ml-3"
+          className="rounded-full h-14 w-14 ml-3"
         />
         <View
           className={`absolute items-center justify-center bottom-0 right-0 rounded-full ${rankColor} border-white border-2 h-6 w-6`}
@@ -64,21 +64,21 @@ export const Card: React.FC<CardProps> = ({
       </TouchableOpacity>
       <View className="flex-col items-start justify-center mx-3 flex-1">
         <Text className="text-base font-bold">{userName}</Text>
-        <Text className="text-base" numberOfLines={1} ellipsizeMode="tail">
+        <Text className="text-sm" numberOfLines={1} ellipsizeMode="tail">
           {status}
         </Text>
       </View>
-      <View>
+      <View className='flex-col items-center justify-center'>
         <TouchableOpacity
           onPress={handleLikePress}
           className="flex-col items-center justify-center mr-4"
         >
           <Ionicons
             name={isLiked ? 'heart' : 'heart-outline'}
-            size={30}
+            size={23}
             color={isLiked ? 'red' : 'black'}
           />
-          <Text className="text-base">
+          <Text className="text-sm">
             {isLiked ? parseInt(noLoves) + 1 : noLoves}
           </Text>
         </TouchableOpacity>

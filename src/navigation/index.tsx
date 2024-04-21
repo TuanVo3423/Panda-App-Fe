@@ -115,6 +115,7 @@ export function AppNavigation() {
             options={({ navigation }: AppStackScreenProps<'MyProfile'>) => ({
               headerShown: true,
               title: 'My Profile',
+
               header: () => (
                 <View className="bg-white py-4 mx-5">
                   <View className=" flex-row items-center space-x-5">

@@ -30,7 +30,7 @@ export const ReviewDetail: React.FC<ReviewDetailProps> = ({
             <Text className='text-xs text-gray-400 py-2'>{location}</Text>
         </View>
         <View className='flex-row rounded-lg pb-3 mb-2'>
-            <Text className='items-start text-lg mx-2'>{content}</Text>
+            <Text className='items-start text-base mx-2'>{content}</Text>
         </View>
     </View>
   )

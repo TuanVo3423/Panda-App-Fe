@@ -14,7 +14,7 @@ export const CategoryCards: React.FC<CategoryProps> = ({
         <TouchableOpacity className='mr-5'>
                 <Image 
                 source={{ uri: urilink }} 
-                className='h-14 w-14 rounded-lg'/>
+                className='h-14 w-14 rounded-lg border-[0.1px] border-gray-500'/>
                 <Text className='text-xs font-semibold text-center mt-1'>{cardName}</Text>
               </TouchableOpacity>
     )

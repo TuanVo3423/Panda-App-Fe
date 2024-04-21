@@ -16,7 +16,7 @@ const Quizz = () => {
         correctAnswer="Dang Dai Tho"
       />
 
-      <TouchableOpacity className='bg-orange-500 flex items-center justify-center rounded-b-xl h-14'>
+      <TouchableOpacity className='bg-[#62929E] flex items-center justify-center rounded-b-xl h-14'>
         <Text className='font-semibold text-white text-center'>Hoc tu vung nang cao</Text>
       </TouchableOpacity>
     </View>
