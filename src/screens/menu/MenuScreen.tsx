@@ -26,20 +26,26 @@ export const MenuScreen = ({
     navigation.navigate('Community');
   };
   return (
-    <View className='bg-white'>
-      <View className='bg-white flex-row items-center px-5 py-3'>
+    <View className="bg-white">
+      <View
+        // style={headerStyles.style}
+        className="bg-white flex-row items-center mt-5 px-5 py-3 border-b-[0.6px] border-gray-300"
+      >
         <Text className="text-2xl flex-1 font-semibold">Menu</Text>
-        <EvilIcons name='gear' size={25} />
+        <EvilIcons name="gear" size={25} />
       </View>
-      <ScrollView contentContainerStyle={{
-        paddingBottom: 100,
-        backgroundColor: 'white',
-      }}>
+      <ScrollView
+        contentContainerStyle={{
+          paddingBottom: 100,
+          paddingTop: 10,
+          backgroundColor: 'white',
+        }}
+      >
         <View className="rounded-xl px-5 mx-5 py-5 bg-[#f1f1f1] h-22 w-100 justify-between flex-row  items-center">
           <View className="flex-row items-center space-x-2">
             <Image
               source={{
-                uri: 'https://scontent.fdad3-5.fna.fbcdn.net/v/t39.30808-6/426406582_3275165722779328_6956692654044124959_n.jpg?stp=cp6_dst-jpg&_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFKRKAp6Ht-2cOdjSEt_j7_ccwLuAhpTVpxzAu4CGlNWknEkV4SL6eGplszEEan1m9IuboLMndYVc2u6nGIP35Z&_nc_ohc=MaNA5UwpEq8Ab5uLSpm&_nc_ht=scontent.fdad3-5.fna&oh=00_AfAmphcrSkzN_fYJpysK4YQPyy1zHZjvnLwPQ6yhHY4vIQ&oe=6625D035',
+                uri: 'https://static.vecteezy.com/system/resources/previews/011/999/958/non_2x/fire-icon-free-png.png',
               }}
               className="h-16 w-16 mr-2 rounded-full "
             />
@@ -49,10 +55,10 @@ export const MenuScreen = ({
             className=" rounded-lg border-[0.5px] border-gray-400 px-2 bg-[#62929E] h-9 w-25 justify-center items-center "
             onPress={handleProfilePress}
           >
-            <Text className='text-xs font-semibold'>Trang ca nhan</Text>
+            <Text className="text-xs font-bold text-white">Trang ca nhan</Text>
           </TouchableOpacity>
         </View>
-        <View className=" bg-white flex-row border-b-[10px] border-[#f1f1f1] pb-10 justify-center h-30 w-100 m-5  ">
+        <View className=" bg-white rounded-lg flex-row border-b-[10px] border-[#f1f1f1] pb-10 justify-center h-30 w-100 m-5  ">
           <TouchableOpacity className="bg-[#f1f1f1] rounded-xl h-20 w-50 mr-5 flex-1 items-center justify-center">
             <View className="h-5 w-20 items-center ">
               <Image
@@ -133,7 +139,6 @@ export const MenuScreen = ({
           </TouchableOpacity>
         </View>
       </ScrollView>
-
     </View>
   );
 };

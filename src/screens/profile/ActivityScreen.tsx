@@ -34,8 +34,8 @@ const ActivityScreen = () => {
           className="h-20 w-20 rounded-full"
         />
         <View className="flex-col ">
-          <Text className="font-semibold text-lg">Tuan chim nho</Text>
-          <Text>Chim dai 10 cm thich tap Gym</Text>
+          <Text className="font-semibold text-lg">Tuan Dep Trai</Text>
+          <Text>No Pain No Money</Text>
         </View>
       </View>
       <View className="border-[1px] rounded-sm bg-gray-100 border-gray-400 p-5 mx-5 flex-col space-y-5">

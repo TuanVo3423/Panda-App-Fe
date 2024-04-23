@@ -19,9 +19,9 @@ export const TeacherProfileScreen = (props: Props) => {
         <View className="my-5 mx-5 pb-3">
           <Information
             avaUri="https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/09/meme-che-15.jpg"
-            userName="Tuan them bu"
+            userName="Tuan Dep Trai"
             location="Vietnam-Korean University"
-            status="Di choi gé bị gé dụ"
+            status="No Pain No Money"
             noLoves="538"
             rank="A"
           />

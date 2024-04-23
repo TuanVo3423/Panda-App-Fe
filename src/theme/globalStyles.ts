@@ -113,7 +113,8 @@ export const headerStyles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'white',
     padding: 16,
-    borderBottomWidth: 1,
-    borderColor: '#BEBEBE',
+    // borderBottomWidth: 1,
+    // borderColor: '#BEBEBE',
+    marginTop: 10,
   },
 });

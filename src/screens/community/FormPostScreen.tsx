@@ -21,7 +21,10 @@ export const FormPostScreen = ({
       <Stack>
         {/* header */}
         <HStack
-          p="10px 10px 0px 5px"
+          paddingTop="20px"
+          paddingRight="10px"
+          paddingBottom={0}
+          paddingLeft="5px"
           justifyContent="space-between"
           alignItems="center"
         >

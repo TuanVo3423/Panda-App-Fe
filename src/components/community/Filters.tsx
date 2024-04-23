@@ -43,7 +43,7 @@ export const Filters = ({
             px={5}
             rounded="full"
             variant="outline"
-            backgroundColor={filterScope === idx ? 'gray.600' : 'white'}
+            backgroundColor={filterScope === idx ? '#62929E' : 'white'}
             borderWidth="1px"
             borderColor="gray.300"
           >

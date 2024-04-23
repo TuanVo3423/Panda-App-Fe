@@ -7,7 +7,7 @@ export const SlideBanner = (props: Props) => {
   const [activeSlide, setActiveSlide] = useState(1);
   const numberOfSlides = 3;
   return (
-    <View className="h-[80px] bg-gray-200  rounded-xl">
+    <View className="h-[80px] bg-[#f1f1f1]  rounded-xl">
       <Slick
         showsPagination={false}
         loop={true}

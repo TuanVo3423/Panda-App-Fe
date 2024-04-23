@@ -93,7 +93,7 @@ export const CommunityScreen = ({
         bottom="20px"
         right="20px"
         zIndex={1}
-        background="orange.500"
+        background="#62929E"
         rounded="full"
         onPress={handlePresentModalCreatePostPress}
         leftIcon={<FontAwesome5 name="pencil-alt" size={24} color="white" />}

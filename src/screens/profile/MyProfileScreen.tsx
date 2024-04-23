@@ -10,6 +10,7 @@ import {
   TextInput,
 } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
+import { headerStyles } from '@theme/globalStyles';
 export const MyProfileScreen = ({
   navigation,
   route,
@@ -36,8 +37,8 @@ export const MyProfileScreen = ({
   };
 
   return (
-    <SafeAreaView>
-      <View className="h-40 w-100 bg-white mx-5 border-gray-300 border-2 justify-center items-center mt-4">
+    <SafeAreaView className="bg-white h-full">
+      <View className="h-40 w-100 bg-white rounded-2xl mx-5 border-gray-300 border-2 justify-center items-center mt-4">
         <TouchableOpacity onPress={() => pickImage()}>
           <Image
             source={{
@@ -52,33 +53,35 @@ export const MyProfileScreen = ({
           <Text className="font-medium"> Change Photo</Text>
         </TouchableOpacity>
       </View>
-      <Text className="font-bold text-lg mx-4 pt-5 "> Username</Text>
+      <Text className="font-semibold text-lg mx-4 pt-5 "> Username</Text>
       <TextInput
-        className="h-14 w-100 bg-white mx-5 my-2 border-2 border-gray-300 px-3 text-gray-400 font-medium"
+        className="h-14 w-100 rounded-2xl bg-white mx-5 my-2 border-2 border-gray-300 px-3 text-gray-400 font-medium"
         placeholder="Rondeptrai"
         onChangeText={(newText) => setUsername(newText)}
         value={username}
       ></TextInput>
-      <Text className="font-bold text-lg mx-4 pt-2 "> Curriculum</Text>
+      <Text className="font-semibold text-lg mx-4 pt-2 "> Curriculum</Text>
       <TextInput
-        className="h-14 w-100 bg-white mx-5 my-2 border-2 border-gray-300 px-3 text-gray-400 font-medium"
+        className="h-14 w-100 rounded-2xl bg-white mx-5 my-2 border-2 border-gray-300 px-3 text-gray-400 font-medium"
         placeholder="12th"
         onChangeText={(newText) => setCurriculum(newText)}
         value={curriculum}
       ></TextInput>
-      <Text className="font-bold text-lg mx-4 pt-2 "> Status message</Text>
+      <Text className="font-semibold text-lg mx-4 pt-2 "> Status message</Text>
       <TextInput
-        className="h-14 w-100 bg-white mx-5 my-2 border-2 border-gray-300 px-3 text-gray-400 font-medium"
+        className="h-14 w-100 rounded-2xl bg-white mx-5 my-2 border-2 border-gray-300 px-3 text-gray-400 font-medium"
         placeholder="Enter status message"
         onChangeText={(newText) => setStatusmessage(newText)}
         value={statusmessage}
       ></TextInput>
-      <Text className="font-bold text-lg mx-4 pt-2 "> Email</Text>
-      <Text className="font-bold text-lg mx-5 pt-2 ">
+      <Text className="font-semibold text-lg mx-4 pt-2 "> Email</Text>
+      <Text className="font-semibold text-lg mx-5 pt-2 ">
         tuanvv.21it@vku.udn.vn
       </Text>
       <View className=" flex-row mx-4 justify-end items-center ">
-        <Button className="h-10 w-20">Save</Button>
+        <Button className="flex items-center justify-center rounded-2xl h-10 w-20 bg-[#62929E]">
+          <Text className="font-bold text-white">Save</Text>
+        </Button>
       </View>
     </SafeAreaView>
   );

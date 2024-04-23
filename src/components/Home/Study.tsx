@@ -13,7 +13,7 @@ const Study = () => {
     'Giới thiệu': (
       <Image
         source={{
-          uri: 'https://scontent.fhan5-9.fna.fbcdn.net/v/t39.30808-6/426406582_3275165722779328_6956692654044124959_n.jpg?stp=cp6_dst-jpg&_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFKRKAp6Ht-2cOdjSEt_j7_ccwLuAhpTVpxzAu4CGlNWknEkV4SL6eGplszEEan1m9IuboLMndYVc2u6nGIP35Z&_nc_ohc=MaNA5UwpEq8Ab5uLSpm&_nc_ht=scontent.fhan5-9.fna&oh=00_AfBYZoPKBtWsnSHMKqQ0VScC0BLLBoDJs2TbA7tEY8dtSQ&oe=6625D035',
+          uri: 'https://warmgun.com/wp-content/uploads/2021/10/banner-elearning.png',
         }}
         className="w-fit h-[200px] rounded-xl"
       />
@@ -21,7 +21,7 @@ const Study = () => {
     'Giáo viên': (
       <Image
         source={{
-          uri: 'https://scontent.fhan5-9.fna.fbcdn.net/v/t39.30808-6/426406582_3275165722779328_6956692654044124959_n.jpg?stp=cp6_dst-jpg&_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFKRKAp6Ht-2cOdjSEt_j7_ccwLuAhpTVpxzAu4CGlNWknEkV4SL6eGplszEEan1m9IuboLMndYVc2u6nGIP35Z&_nc_ohc=MaNA5UwpEq8Ab5uLSpm&_nc_ht=scontent.fhan5-9.fna&oh=00_AfBYZoPKBtWsnSHMKqQ0VScC0BLLBoDJs2TbA7tEY8dtSQ&oe=6625D035',
+          uri: 'https://warmgun.com/wp-content/uploads/2021/10/banner-elearning.png',
         }}
         className="w-fit h-[200px] rounded-xl"
       />
@@ -36,7 +36,7 @@ const Study = () => {
           >
             <View className="m-4">
               <Feedback
-                avaUri="https://scontent.fhan5-9.fna.fbcdn.net/v/t39.30808-6/426406582_3275165722779328_6956692654044124959_n.jpg?stp=cp6_dst-jpg&_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFKRKAp6Ht-2cOdjSEt_j7_ccwLuAhpTVpxzAu4CGlNWknEkV4SL6eGplszEEan1m9IuboLMndYVc2u6nGIP35Z&_nc_ohc=MaNA5UwpEq8Ab5uLSpm&_nc_ht=scontent.fhan5-9.fna&oh=00_AfBYZoPKBtWsnSHMKqQ0VScC0BLLBoDJs2TbA7tEY8dtSQ&oe=6625D035"
+                avaUri="https://warmgun.com/wp-content/uploads/2021/10/banner-elearning.png"
                 name="Phuc 20cm"
                 grade="12"
                 time="3 thang"
@@ -49,7 +49,7 @@ const Study = () => {
             </View>
             <View className="m-4">
               <Feedback
-                avaUri="https://scontent.fhan5-9.fna.fbcdn.net/v/t39.30808-6/426406582_3275165722779328_6956692654044124959_n.jpg?stp=cp6_dst-jpg&_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFKRKAp6Ht-2cOdjSEt_j7_ccwLuAhpTVpxzAu4CGlNWknEkV4SL6eGplszEEan1m9IuboLMndYVc2u6nGIP35Z&_nc_ohc=MaNA5UwpEq8Ab5uLSpm&_nc_ht=scontent.fhan5-9.fna&oh=00_AfBYZoPKBtWsnSHMKqQ0VScC0BLLBoDJs2TbA7tEY8dtSQ&oe=6625D035"
+                avaUri="https://warmgun.com/wp-content/uploads/2021/10/banner-elearning.png"
                 name="Phuc 20cm"
                 grade="12"
                 time="3 thang"
@@ -62,7 +62,7 @@ const Study = () => {
             </View>
             <View className="m-4">
               <Feedback
-                avaUri="https://scontent.fhan5-9.fna.fbcdn.net/v/t39.30808-6/426406582_3275165722779328_6956692654044124959_n.jpg?stp=cp6_dst-jpg&_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFKRKAp6Ht-2cOdjSEt_j7_ccwLuAhpTVpxzAu4CGlNWknEkV4SL6eGplszEEan1m9IuboLMndYVc2u6nGIP35Z&_nc_ohc=MaNA5UwpEq8Ab5uLSpm&_nc_ht=scontent.fhan5-9.fna&oh=00_AfBYZoPKBtWsnSHMKqQ0VScC0BLLBoDJs2TbA7tEY8dtSQ&oe=6625D035"
+                avaUri="https://warmgun.com/wp-content/uploads/2021/10/banner-elearning.png"
                 name="Phuc 20cm"
                 grade="12"
                 time="3 thang"
@@ -113,8 +113,7 @@ const Study = () => {
     <View className="mx-5 border-b-[0.5px] border-gray-200 mb-4">
       <View className="flex-row items-center">
         <View className="flex-row items-center justify-center pr-2 mb-1">
-          <Text className="font-bold text-lg text-[#62929E] border-r-4 border-[#62929E]">Study</Text>
-
+          <Text className="font-bold text-lg text-[#62929E]">Study</Text>
         </View>
         {['Giới thiệu', 'Giáo viên', 'Đánh giá'].map((tab) => (
           <Tab

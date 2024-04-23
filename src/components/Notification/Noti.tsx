@@ -7,7 +7,7 @@ const Noti = () => {
       <View className="flex-row items-center p-5 space-x-5">
         <Image
           source={{
-            uri: 'https://scontent.fdad3-4.fna.fbcdn.net/v/t39.30808-6/217582971_10160287216518265_1458845262761291760_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFqyDjxJyfevYvKht5eTFSqJkTHrhZf9WkmRMeuFl_1aahLzJLP8Ntx_Lry3HX_ESdewjdB6zkCNi8yLKtUSIZr&_nc_ohc=cb7hIiQnS8UAX_CgZ3e&_nc_ht=scontent.fdad3-4.fna&oh=00_AfDY7ZYZSjE6vS_6h006rZr2kZBz2cYk74QvwbBrKK6KVQ&oe=6601C3F8',
+            uri: 'https://yt3.googleusercontent.com/-CFTJHU7fEWb7BYEb6Jh9gm1EpetvVGQqtof0Rbh-VQRIznYYKJxCaqv_9HeBcmJmIsp2vOO9JU=s900-c-k-c0x00ffffff-no-rj',
           }}
           className="rounded-full h-16 w-16"
         />

@@ -13,6 +13,7 @@ import {
 } from 'native-base';
 import React, { useState } from 'react';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import TextRecognition from '@react-native-ml-kit/text-recognition';
 
 export function CaptureScreen() {
   const [image, setImage] = useState<string>('');
@@ -57,6 +58,19 @@ export function CaptureScreen() {
       const data = await handleUploadImage(
         ImagePickerObject as ImagePicker.ImagePickerSuccessResult
       );
+      const result = await TextRecognition.recognize(data.url);
+      console.log('cloudinary url:', data.url);
+      console.log('Recognized text:', result.text);
+
+      for (let block of result.blocks) {
+        console.log('Block text:', block.text);
+        console.log('Block frame:', block.frame);
+
+        for (let line of block.lines) {
+          console.log('Line text:', line.text);
+          console.log('Line frame:', line.frame);
+        }
+      }
       toast.show({
         description: `Upload Scuccessful. Image URL: ${data.url}`,
       });
@@ -152,7 +166,7 @@ export function CaptureScreen() {
           variant="outline"
         >
           <Text fontSize="16px" fontWeight="bold" color="blue.600">
-            Upload To Cloud
+            Continue
           </Text>
         </Button>
       </View>

@@ -45,7 +45,7 @@ export const NotificationScreen = (props: any) => {
     }
   };
   return (
-    <View className="bg-white h-full">
+    <View className="bg-white h-full pt-2">
       <View style={headerStyles.style}>
         <Feather
           name="chevron-left"

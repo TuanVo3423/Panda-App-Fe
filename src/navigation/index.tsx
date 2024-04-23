@@ -61,7 +61,7 @@ export function AppNavigation() {
               headerShown: true,
               title: 'Teacher Profile',
               header: () => (
-                <View className="flex bg-white py-4 px-4 flex-row items-center justify-between border-b-[1px] border-gray-100">
+                <View className="flex bg-white py-5 mt-3 pb-4 px-4 flex-row items-center justify-between border-b-[1px] border-gray-100">
                   <Feather
                     name="chevron-left"
                     size={28}
@@ -90,7 +90,7 @@ export function AppNavigation() {
                 fontSize: 16,
               },
               header: () => (
-                <View className="bg-white py-4 mx-5">
+                <View className="bg-white pb-4 pt-9 px-5 border-b-[0.5px] border-gray-300">
                   <View className=" flex-row items-center justify-between space-x-5">
                     <HStack space={4}>
                       <Feather
@@ -101,10 +101,7 @@ export function AppNavigation() {
                       />
                       <Text className="text-lg font-regular">Profile</Text>
                     </HStack>
-                    <View className="flex flex-row space-x-2">
-                      <AntDesign name="gift" size={24} color="gray" />
-                      <AntDesign name="deleteuser" size={24} color="gray" />
-                    </View>
+                    <View className="flex flex-row space-x-2"></View>
                   </View>
                 </View>
               ),
@@ -117,7 +114,7 @@ export function AppNavigation() {
               title: 'My Profile',
 
               header: () => (
-                <View className="bg-white py-4 mx-5">
+                <View className="bg-white pt-6 pb-3 mx-5">
                   <View className=" flex-row items-center space-x-5">
                     <Feather
                       name="chevron-left"
@@ -141,7 +138,7 @@ export function AppNavigation() {
               headerShown: true,
               title: 'Activity Community',
               header: () => (
-                <View className="bg-white py-4 mx-5">
+                <View className="bg-white pt-6 pb-4 mx-5">
                   <View className=" flex-row items-center space-x-5">
                     <Feather
                       name="chevron-left"

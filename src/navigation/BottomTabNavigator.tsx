@@ -88,7 +88,7 @@ export default function BottomTabNavigator() {
           headerShown: false,
           // title: 'Community',
           tabBarIcon: ({ color, focused }) => (
-            <View background="orange.500" rounded="full" padding={2.5}>
+            <View background="#62929E" rounded="full" padding={2.5}>
               <Ionicons name={'camera-outline'} size={24} color={'white'} />
             </View>
           ),
