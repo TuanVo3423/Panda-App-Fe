@@ -17,6 +17,7 @@
       "@theme/*": ["./src/theme/*"],
       "@storage/*": ["./src/storage/*"],
       "@services/*": ["./src/services/*"],
+      "@api/*": ["./src/api/*"]
     }
   }
 }

@@ -2,10 +2,15 @@ import { Avatar, Box, HStack, Heading, Stack, Text } from 'native-base';
 import React from 'react';
 import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
+import { IPostResponse } from '@services/api/posts/types';
 
-type Props = {};
-
-export const Post = (props: Props) => {
+export const Post = ({
+  content,
+  questionContent,
+  title,
+  upvote,
+  type,
+}: IPostResponse) => {
   return (
     <Stack space={4}>
       {/* header */}
@@ -16,12 +21,8 @@ export const Post = (props: Props) => {
         </HStack>
         <Text>3 day(s) ago</Text>
       </HStack>
-      <Heading size="lg">Hi friends</Heading>
-      <Text color="gray.500">
-        I'm looking for a new friend to play game with me. I'm a good player and
-        I can teach you how to play game well. Please contact me if you are
-        interested in.
-      </Text>
+      <Heading size="lg">{title}</Heading>
+      <Text color="gray.500">{questionContent}</Text>
       {/* footer */}
       <HStack justifyContent="space-between">
         <Tag content={'Daily conversation'} />
@@ -34,7 +35,7 @@ export const Post = (props: Props) => {
               size={24}
               color="black"
             />
-            <Text>1</Text>
+            <Text>{upvote}</Text>
           </HStack>
           {/* underline */}
           <HStack alignItems="center" space={2}>

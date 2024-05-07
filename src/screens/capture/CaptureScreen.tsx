@@ -14,8 +14,11 @@ import {
 import React, { useState } from 'react';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import TextRecognition from '@react-native-ml-kit/text-recognition';
+import { RootTabScreenProps } from '@navigation/data';
+import { useGetCaptureResult } from '@services/api/capture/queries';
+import { getCaptureResult } from '@services/api/capture/request';
 
-export function CaptureScreen() {
+export function CaptureScreen({ navigation }: RootTabScreenProps<'Capture'>) {
   const [image, setImage] = useState<string>('');
   const [ImagePickerObject, setImagePickerObject] =
     useState<ImagePicker.ImagePickerResult>();
@@ -62,18 +65,29 @@ export function CaptureScreen() {
       console.log('cloudinary url:', data.url);
       console.log('Recognized text:', result.text);
 
-      for (let block of result.blocks) {
-        console.log('Block text:', block.text);
-        console.log('Block frame:', block.frame);
-
-        for (let line of block.lines) {
-          console.log('Line text:', line.text);
-          console.log('Line frame:', line.frame);
-        }
-      }
-      toast.show({
-        description: `Upload Scuccessful. Image URL: ${data.url}`,
+      const previewData = await getCaptureResult({
+        query: encodeURIComponent(result.text),
       });
+
+      console.log('previewData:', previewData);
+
+      navigation.navigate('PreviewCaptureResult', { data: previewData });
+      // if (!isLoading) {
+      // }
+
+      // for (let block of result.blocks) {
+      //   console.log('Block text:', block.text);
+      //   console.log('Block frame:', block.frame);
+
+      //   for (let line of block.lines) {
+      //     console.log('Line text:', line.text);
+      //     console.log('Line frame:', line.frame);
+      //   }
+      // }
+      // after have text, we call api and navigate to next screen with props
+      // toast.show({
+      //   description: `Upload Scuccessful. Image URL: ${data.url}`,
+      // });
       setIsUploadingImage(false);
     } catch (err) {
       console.log('err: ', err);
@@ -85,14 +99,14 @@ export function CaptureScreen() {
       return (
         <View maxH={500} position="relative">
           <Image
+            resizeMode="contain"
             source={{ uri: image }}
             w="full"
-            maxH={500}
             h="full"
             alt="problem_image"
           />
           <Button
-            background="blue.600"
+            background="#62929E"
             leftIcon={
               <Feather
                 onPress={() => setImage('')}
@@ -135,7 +149,7 @@ export function CaptureScreen() {
           onPress={pickImage}
           fontSize="20px"
           fontWeight="bold"
-          color="blue.600"
+          color="#62929E"
         >
           Upload you photo
         </Text>
@@ -146,7 +160,7 @@ export function CaptureScreen() {
           rounded="xl"
           onPress={takePhoto}
           variant="outline"
-          background="blue.600"
+          background="#62929E"
         >
           <Text fontSize="20px" fontWeight="bold" color="white">
             Take a photo
@@ -165,7 +179,7 @@ export function CaptureScreen() {
           isLoading={isUploadingImage}
           variant="outline"
         >
-          <Text fontSize="16px" fontWeight="bold" color="blue.600">
+          <Text fontSize="16px" fontWeight="bold" color="#62929E">
             Continue
           </Text>
         </Button>
@@ -175,7 +189,7 @@ export function CaptureScreen() {
         {image && (
           <HStack mt={4} justifyContent="space-between">
             <Button
-              background="blue.600"
+              background="#62929E"
               maxH={20}
               variant="outline"
               leftIcon={<AntDesign name="camerao" size={24} color="white" />}
@@ -186,7 +200,7 @@ export function CaptureScreen() {
               </Text>
             </Button>
             <Button
-              background="blue.600"
+              background="#62929E"
               maxH={20}
               variant="outline"
               leftIcon={

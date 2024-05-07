@@ -22,6 +22,7 @@ import {
   TabView,
 } from 'react-native-tab-view';
 import { headerStyles } from '@theme/globalStyles';
+import { QueryClient, useQueryClient } from 'react-query';
 
 const renderScene = SceneMap({
   life: () => <LifeTab />,
@@ -47,7 +48,9 @@ export const CommunityScreen = ({
   const handlePresentModalCreatePostPress = useCallback(() => {
     bottomSheetModalCreatePostRef.current?.present();
   }, []);
-
+  const queryClient = useQueryClient();
+  const data = queryClient.getQueryData('getPosts');
+  console.log('data final: ', data);
   return (
     <>
       <View style={headerStyles.style}>

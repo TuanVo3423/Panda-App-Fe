@@ -1,1 +1,1 @@
-export const API_CONTRACT = 'https://api-temp.vercel.app/api/angeloricardoweb/'
+export const API_CONTRACT = 'http://192.168.1.8:5000/api/';

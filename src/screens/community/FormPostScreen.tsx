@@ -1,20 +1,72 @@
 import { BottomSheetForChooseTopics, FormSection } from '@components/community';
 import { TopicFilters } from '@components/community/data';
+import { API_CONTRACT } from '@constants/index';
 import { AntDesign, EvilIcons } from '@expo/vector-icons';
 import { BottomSheetModal } from '@gorhom/bottom-sheet';
 import { AppStackScreenProps } from '@navigation/data';
-import { Button, HStack, Heading, Stack, Text } from 'native-base';
+import { createPosts } from '@services/api/posts/request';
+import { IPostRequest } from '@services/api/posts/types';
+import { fetcher } from '@services/fetcher';
+import {
+  Box,
+  Button,
+  HStack,
+  Heading,
+  Stack,
+  Text,
+  useToast,
+} from 'native-base';
 import React, { useCallback, useRef, useState } from 'react';
 import { SafeAreaView, TouchableOpacity } from 'react-native';
+import { useMutation, useQueryClient } from 'react-query';
 export const FormPostScreen = ({
   route,
   navigation,
 }: AppStackScreenProps<'FormPost'>) => {
+  const [data, setData] = useState<IPostRequest>({
+    title: '',
+    content: '',
+    questionContent: '',
+    type: ['Daily conversation'],
+  });
+  const isDisabled =
+    data.title === '' || data.content === '' || data.questionContent === '';
   const bottomSheetModalChooseTopicRef = useRef<BottomSheetModal>(null);
   const [topicIndex, setTopicIndex] = useState<number>(-1);
   const handlePresentModalChooseTopicPress = useCallback(() => {
     bottomSheetModalChooseTopicRef.current?.present();
   }, []);
+  const queryClient = useQueryClient();
+
+  const { mutateAsync: handleUploadPost, isSuccess } = useMutation(
+    async () => {
+      const res = await createPosts(data);
+      return res;
+    },
+    {
+      onSuccess: (data) => {
+        queryClient.setQueryData(['getPosts'], (oldData: any) => {
+          // console.log('oldData', oldData);
+          return [...oldData, data];
+        });
+        console.log(data);
+        toast.show({
+          render: () => {
+            return (
+              <Box bg="#62929E" px="2" py="1" rounded="sm" color="white" mb={5}>
+                Create Post Success!
+              </Box>
+            );
+          },
+        });
+        navigation.goBack();
+      },
+      onError(error: any) {
+        console.log(error);
+      },
+    }
+  );
+  const toast = useToast();
   const { tab_topic } = route.params;
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
@@ -35,7 +87,13 @@ export const FormPostScreen = ({
             leftIcon={<EvilIcons name="close" size={28} color="black" />}
           />
           <Heading size="md">{TopicFilters[tab_topic].title}</Heading>
-          <Button variant="ghost">
+          <Button
+            disabled={isDisabled}
+            onPress={async () => {
+              await handleUploadPost();
+            }}
+            variant="ghost"
+          >
             <Text>Upload</Text>
           </Button>
         </HStack>
@@ -93,7 +151,7 @@ export const FormPostScreen = ({
             </TouchableOpacity>
           )}
           {/* form */}
-          <FormSection />
+          <FormSection data={data} setData={setData} />
         </Stack>
       </Stack>
 

@@ -17,6 +17,7 @@ import { deviceSafeAreaDetection } from '@theme/globalStyles';
 import Feather from '@expo/vector-icons/Feather';
 import ActivityScreen from '@screens/profile/ActivityScreen';
 import { MyProfileScreen } from '@screens/profile/MyProfileScreen';
+import { PreviewResultScreen } from '@screens/capture';
 
 const Stack = createNativeStackNavigator<AppStackParamList>();
 export function AppNavigation() {
@@ -158,6 +159,34 @@ export function AppNavigation() {
             })}
             name="Activity"
             component={ActivityScreen}
+          />
+          <Stack.Screen
+            options={({
+              navigation,
+            }: AppStackScreenProps<'PreviewCaptureResult'>) => ({
+              headerShown: true,
+              title: 'Preview Result',
+              header: () => (
+                <View className="bg-white pt-6 pb-4 mx-5">
+                  <View className=" flex-row items-center space-x-5">
+                    <Feather
+                      name="chevron-left"
+                      size={28}
+                      className=""
+                      onPress={() => navigation.goBack()}
+                    />
+                    <Text className="text-lg font-regular">
+                      Preview Your Result
+                    </Text>
+                  </View>
+                </View>
+              ),
+              headerTitleStyle: {
+                fontSize: 16,
+              },
+            })}
+            name="PreviewCaptureResult"
+            component={PreviewResultScreen}
           />
         </Stack.Navigator>
       </NavigationContainer>

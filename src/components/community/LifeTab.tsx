@@ -5,10 +5,27 @@ import { BottomSheetForFilter } from './BottomSheetForFilter';
 import { Filters } from './Filters';
 import { Post } from './Post';
 import { SlideBanner } from './SlideBanner';
+import React from 'react';
+import { useQuery } from 'react-query';
+import { useGetPosts } from '@services/api/posts/queries';
+// const useGetPosts = (options?: any) =>
+//   useQuery(
+//     'getPosts',
+//     async () => {
+//       // const data = await getPosts();
+//       return 1;
+//     },
+//     { ...options }
+//   );
 export const LifeTab = () => {
   const [filterState, setFilterState] = useState<number>(0);
   const [filterScope, setFilterScope] = useState<number>(0);
   const bottomSheetModalFilterRef = useRef<BottomSheetModal>(null);
+  const { data, isLoading, refetch } = useGetPosts();
+  // console.log(data, isLoading, refetch);
+  // if (!isLoading) {
+  //   // console.log(data);
+  // }
 
   const handlePresentModalPress = useCallback(() => {
     bottomSheetModalFilterRef.current?.present();
@@ -28,8 +45,18 @@ export const LifeTab = () => {
         </View>
         <ScrollView flex={1}>
           <Stack space={6}>
-            {Array.from({ length: 6 }).map((_, idx) => (
-              <Post key={idx} />
+            {data?.map((post) => (
+              <Post
+                key={post.id}
+                id={post.id}
+                content={post.content}
+                questionContent={post.questionContent}
+                title={post.title}
+                upvote={post.upvote}
+                type={post.type}
+                group_id={post.group_id}
+                image_buffering={post.image_buffering}
+              />
             ))}
           </Stack>
         </ScrollView>

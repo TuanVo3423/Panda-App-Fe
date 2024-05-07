@@ -1,10 +1,14 @@
 import { EvilIcons } from '@expo/vector-icons';
+import { IPostRequest } from '@services/api/posts/types';
 import { Button, FormControl, HStack, Input, Stack, Text } from 'native-base';
-import React from 'react';
+import React, { useState } from 'react';
 
-type Props = {};
+type Props = {
+  data: any;
+  setData: any;
+};
 
-export const FormSection = (props: Props) => {
+export const FormSection = ({ data, setData }: Props) => {
   return (
     <Stack position="relative" space={4}>
       {/* first time banner */}
@@ -31,6 +35,22 @@ export const FormSection = (props: Props) => {
       {/* form input title */}
       <FormControl isInvalid w="75%" maxW="300px">
         <Input
+          value={data?.title}
+          onChangeText={(text) => {
+            setData({
+              ...data,
+              title: text,
+              questionContent: text,
+            });
+          }}
+          // onChange={handleChange}
+          // onChange={(event) =>
+          //   // setInput({
+          //   //   ...input,
+          //   //   title: e.target.value,
+          //   // })
+          //   console.log(event.target.value)
+          // }
           px={0}
           fontSize="16px"
           fontWeight="semibold"
@@ -40,6 +60,13 @@ export const FormSection = (props: Props) => {
           placeholder="Please enter the title."
         />
         <Input
+          w="full"
+          onChangeText={(text) => {
+            setData({
+              ...data,
+              content: text,
+            });
+          }}
           px={0}
           fontSize="14px"
           style={{ color: 'orange' }}
