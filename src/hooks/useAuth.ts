@@ -1,9 +1,9 @@
 import useAuthenticatedStore from '@stores/useAuthenticatedStore';
 export function useAuth() {
-  const { isAuthenticated, setIsAuthenticated } = useAuthenticatedStore();
-  
+  const { UserProfile, setUserProfile } = useAuthenticatedStore();
+
   return {
-    isAuthenticated,
-    setIsAuthenticated,
+    UserProfile,
+    setUserProfile,
   };
 }

@@ -1,5 +1,5 @@
 import { AppStackScreenProps } from '@navigation/data';
-import { Button } from 'native-base';
+import { Box, Button, useToast } from 'native-base';
 import React from 'react';
 import {
   SafeAreaView,
@@ -11,6 +11,8 @@ import {
 } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { headerStyles } from '@theme/globalStyles';
+import { useMutation } from 'react-query';
+import { UpdateProfile } from '@services/api/auth/request';
 export const MyProfileScreen = ({
   navigation,
   route,
@@ -19,6 +21,35 @@ export const MyProfileScreen = ({
   const [curriculum, setCurriculum] = React.useState('');
   const [statusmessage, setStatusmessage] = React.useState('');
   const [image, setImage] = React.useState<string>('');
+  const toast = useToast();
+
+  const {
+    data,
+    isLoading,
+    mutateAsync: handleUpdateProfile,
+  } = useMutation(
+    'UpdateProfile',
+    async () => {
+      const data = await UpdateProfile({
+        name: username,
+        avatar: image,
+      });
+      return data;
+    },
+    {
+      onSuccess: (data) => {
+        toast.show({
+          render: () => {
+            return (
+              <Box bg="#62929E" px="2" py="1" rounded="sm" color="white" mb={5}>
+                Update Profile Success!
+              </Box>
+            );
+          },
+        });
+      },
+    }
+  );
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
@@ -79,7 +110,10 @@ export const MyProfileScreen = ({
         tuanvv.21it@vku.udn.vn
       </Text>
       <View className=" flex-row mx-4 justify-end items-center ">
-        <Button className="flex items-center justify-center rounded-2xl h-10 w-20 bg-[#62929E]">
+        <Button
+          onPress={async () => await handleUpdateProfile()}
+          className="flex items-center justify-center rounded-2xl h-10 w-20 bg-[#62929E]"
+        >
           <Text className="font-bold text-white">Save</Text>
         </Button>
       </View>

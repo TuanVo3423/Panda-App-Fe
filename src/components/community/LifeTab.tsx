@@ -1,5 +1,5 @@
 import { BottomSheetModal } from '@gorhom/bottom-sheet';
-import { Box, ScrollView, Stack, View } from 'native-base';
+import { Box, Center, ScrollView, Stack, View } from 'native-base';
 import { useCallback, useRef, useState } from 'react';
 import { BottomSheetForFilter } from './BottomSheetForFilter';
 import { Filters } from './Filters';
@@ -8,6 +8,7 @@ import { SlideBanner } from './SlideBanner';
 import React from 'react';
 import { useQuery } from 'react-query';
 import { useGetPosts } from '@services/api/posts/queries';
+import { ActivityIndicator } from 'react-native';
 // const useGetPosts = (options?: any) =>
 //   useQuery(
 //     'getPosts',
@@ -17,15 +18,11 @@ import { useGetPosts } from '@services/api/posts/queries';
 //     },
 //     { ...options }
 //   );
-export const LifeTab = () => {
+export const LifeTab = ({ navigation }: any) => {
   const [filterState, setFilterState] = useState<number>(0);
   const [filterScope, setFilterScope] = useState<number>(0);
   const bottomSheetModalFilterRef = useRef<BottomSheetModal>(null);
   const { data, isLoading, refetch } = useGetPosts();
-  // console.log(data, isLoading, refetch);
-  // if (!isLoading) {
-  //   // console.log(data);
-  // }
 
   const handlePresentModalPress = useCallback(() => {
     bottomSheetModalFilterRef.current?.present();
@@ -43,23 +40,30 @@ export const LifeTab = () => {
         <View>
           <SlideBanner />
         </View>
-        <ScrollView flex={1}>
-          <Stack space={6}>
-            {data?.map((post) => (
-              <Post
-                key={post.id}
-                id={post.id}
-                content={post.content}
-                questionContent={post.questionContent}
-                title={post.title}
-                upvote={post.upvote}
-                type={post.type}
-                group_id={post.group_id}
-                image_buffering={post.image_buffering}
-              />
-            ))}
-          </Stack>
-        </ScrollView>
+        {isLoading ? (
+          <Center flex={1}>
+            <ActivityIndicator size="large" />
+          </Center>
+        ) : (
+          <ScrollView flex={1}>
+            <Stack space={6}>
+              {data?.map((post) => (
+                <Post
+                  navigation={navigation}
+                  key={post.id}
+                  id={post.id}
+                  content={post.content}
+                  questionContent={post.questionContent}
+                  title={post.title}
+                  upvote={post.upvote}
+                  type={post.type}
+                  group_id={post.group_id}
+                  image_buffering={post.image_buffering}
+                />
+              ))}
+            </Stack>
+          </ScrollView>
+        )}
       </Stack>
       <BottomSheetForFilter
         filterState={filterState}

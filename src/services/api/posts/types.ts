@@ -15,3 +15,11 @@ export interface IPostRequest {
   questionContent?: string;
   type?: string[];
 }
+
+export interface IUpdatePostRequest {
+  title?: string;
+  content?: string;
+  questionContent?: string;
+  type?: string[];
+  upvote: number;
+}

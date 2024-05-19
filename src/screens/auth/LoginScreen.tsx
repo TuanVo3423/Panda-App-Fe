@@ -6,7 +6,9 @@ import BottomSheet, {
   BottomSheetView,
 } from '@gorhom/bottom-sheet';
 import { AuthStackScreenProps } from '@navigation/data';
+import { Login } from '@services/api/auth/request';
 import useAuthenticatedStore from '@stores/useAuthenticatedStore';
+import { Button, Input } from 'native-base';
 import React, { useCallback, useRef, useState } from 'react';
 import {
   Keyboard,
@@ -17,17 +19,40 @@ import {
   View,
 } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { useMutation } from 'react-query';
 export function LoginScreen({
   navigation,
   route,
 }: AuthStackScreenProps<'Login'>) {
+  const [dataLogin, setDataLogin] = useState({
+    email: '',
+    password: '',
+  });
   const sheetRef = useRef<BottomSheet>(null);
   const sheetRef1 = useRef<BottomSheet>(null);
-  const { setIsAuthenticated } = useAuthenticatedStore();
+  const { setUserProfile } = useAuthenticatedStore();
+  const { mutateAsync: handleLogin, isLoading } = useMutation(
+    async () => {
+      const res = await Login({
+        email: dataLogin.email,
+        password: dataLogin.password,
+      });
+      return res;
+    },
+    {
+      onSuccess: (data) => {
+        setUserProfile(data);
+        navigation.navigate('Root');
+      },
+      onError(error: any) {
+        console.log(error);
+      },
+    }
+  );
   // const navigation = useNavigation();
   const [checked, setChecked] = React.useState('first');
   const [value, setValue] = useState<string>('');
-  const snapPoints = ['22%'];
+  const snapPoints = ['30%'];
   const snapPoints1 = ['76%'];
   const handleSnapPress = useCallback((index: number) => {
     sheetRef.current?.snapToIndex(index);
@@ -72,12 +97,11 @@ export function LoginScreen({
                 descript="Tiếp tục với Google"
                 bgColor="white"
                 txtColor="black"
-                onPress={() => {
-                  setIsAuthenticated(true);
-                  navigation.navigate('Root');
+                onPress={async () => {
+                  // await navigation.navigate('Root');
                 }}
               />
-              <LoginButton
+              {/* <LoginButton
                 IconUri="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/480px-Facebook_Logo_%282019%29.png"
                 descript="Tiếp tục với Facebook"
                 bgColor="#1977f3"
@@ -88,7 +112,7 @@ export function LoginScreen({
                 descript="Tiếp tục với Apple"
                 bgColor="black"
                 txtColor="white"
-              />
+              /> */}
 
               <TouchableOpacity
                 className="h-14 rounded-xl w-full bg-transparent flex items-center justify-center mb-2"
@@ -118,7 +142,34 @@ export function LoginScreen({
           >
             <BottomSheetView>
               <View className="flex-col space-y-2 mx-5">
-                <LoginButton
+                <Input
+                  onChangeText={(text) =>
+                    setDataLogin({ ...dataLogin, email: text })
+                  }
+                  value={dataLogin.email}
+                  size="md"
+                  placeholder="Nhập email..."
+                />
+                <View></View>
+                <Input
+                  onChangeText={(text) =>
+                    setDataLogin({ ...dataLogin, password: text })
+                  }
+                  value={dataLogin.password}
+                  size="md"
+                  placeholder="Nhập mật khẩu..."
+                />
+                <Button
+                  isLoading={isLoading}
+                  onPress={async () => {
+                    await handleLogin();
+                  }}
+                >
+                  <Text className="text-md text-white font-bold">
+                    Đăng nhập
+                  </Text>
+                </Button>
+                {/* <LoginButton
                   IconUri="https://cdn.haitrieu.com/wp-content/uploads/2022/01/Logo-Zalo-Arc.png"
                   descript="Tiếp tục với Zalo"
                   bgColor="#048fe4"
@@ -129,7 +180,7 @@ export function LoginScreen({
                   descript="Tiếp tục với Email"
                   bgColor="#e8e8e8"
                   txtColor="black"
-                />
+                /> */}
               </View>
             </BottomSheetView>
           </BottomSheet>

@@ -14,6 +14,7 @@ export type AppStackParamList = {
   TeacherProfile: undefined;
   FormPost: { tab_topic: number };
   PreviewCaptureResult: { data: any };
+  PreviewComment: { post_id: any };
 };
 
 // app props types

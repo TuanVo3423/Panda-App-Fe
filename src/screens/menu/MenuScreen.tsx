@@ -8,11 +8,13 @@ import { EvilIcons } from '@expo/vector-icons';
 import { RootTabScreenProps } from '@navigation/data';
 import { headerStyles } from '@theme/globalStyles';
 import { ScrollView } from 'react-native';
+import useAuthenticatedStore from '@stores/useAuthenticatedStore';
 
 export const MenuScreen = ({
   navigation,
   route,
 }: RootTabScreenProps<'Menu'>) => {
+  const { UserProfile } = useAuthenticatedStore();
   const handleProfilePress = () => {
     navigation.navigate('Profile');
   };
@@ -49,7 +51,9 @@ export const MenuScreen = ({
               }}
               className="h-16 w-16 mr-2 rounded-full "
             />
-            <Text className="ms-2px text-base font-semibold">Rondeptrai</Text>
+            <Text className="ms-2px text-base font-semibold">
+              {UserProfile.user?.name}
+            </Text>
           </View>
           <TouchableOpacity
             className=" rounded-lg border-[0.5px] border-gray-400 px-2 bg-[#62929E] h-9 w-25 justify-center items-center "

@@ -10,11 +10,13 @@ import {
   View,
 } from 'react-native';
 import React from 'react';
+import useAuthenticatedStore from '@stores/useAuthenticatedStore';
 
 export const ProfileScreen = ({
   navigation,
   route,
 }: AppStackScreenProps<'Profile'>) => {
+  const { UserProfile } = useAuthenticatedStore();
   const handleEditProfilePress = () => {
     navigation.navigate('MyProfile');
   };
@@ -36,7 +38,7 @@ export const ProfileScreen = ({
               className="h-10 w-10 mr-2 rounded-full "
             />
             <View className="ms-2px">
-              <Text className="font-bold"> Rondeptrai</Text>
+              <Text className="font-bold"> {UserProfile.user?.name}</Text>
               <Text> Grade 12</Text>
             </View>
           </View>

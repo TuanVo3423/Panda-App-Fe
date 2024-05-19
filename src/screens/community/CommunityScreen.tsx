@@ -24,12 +24,6 @@ import {
 import { headerStyles } from '@theme/globalStyles';
 import { QueryClient, useQueryClient } from 'react-query';
 
-const renderScene = SceneMap({
-  life: () => <LifeTab />,
-  study: () => <StudyTab />,
-  problem: () => <ProblemTab />,
-});
-
 export const CommunityScreen = ({
   navigation,
 }: RootTabScreenProps<'Community'>) => {
@@ -44,6 +38,11 @@ export const CommunityScreen = ({
   const TAB_MARGIN = 10;
   const bottomSheetModalCreatePostRef = useRef<BottomSheetModal>(null);
 
+  const renderScene = SceneMap({
+    life: () => <LifeTab navigation={navigation} />,
+    study: () => <StudyTab />,
+    problem: () => <ProblemTab />,
+  });
   // callbacks
   const handlePresentModalCreatePostPress = useCallback(() => {
     bottomSheetModalCreatePostRef.current?.present();

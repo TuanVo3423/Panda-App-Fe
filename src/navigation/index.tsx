@@ -18,16 +18,17 @@ import Feather from '@expo/vector-icons/Feather';
 import ActivityScreen from '@screens/profile/ActivityScreen';
 import { MyProfileScreen } from '@screens/profile/MyProfileScreen';
 import { PreviewResultScreen } from '@screens/capture';
+import { PreviewCommentScreen } from '@screens/community';
 
 const Stack = createNativeStackNavigator<AppStackParamList>();
 export function AppNavigation() {
-  const { isAuthenticated } = useAuthenticatedStore();
+  const { UserProfile } = useAuthenticatedStore();
   // const isLogged = true;
 
   return (
     <SafeAreaView style={deviceSafeAreaDetection.androidSafeArea}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName={isAuthenticated ? 'Root' : 'Auth'}>
+        <Stack.Navigator initialRouteName={UserProfile.token ? 'Root' : 'Auth'}>
           <Stack.Screen
             name="Root"
             options={{ headerShown: false }}
@@ -187,6 +188,35 @@ export function AppNavigation() {
             })}
             name="PreviewCaptureResult"
             component={PreviewResultScreen}
+          />
+
+          <Stack.Screen
+            options={({
+              navigation,
+            }: AppStackScreenProps<'PreviewComment'>) => ({
+              headerShown: true,
+              title: 'Preview Comment',
+              header: () => (
+                <View className="bg-white pt-6 pb-4 mx-5">
+                  <View className=" flex-row items-center space-x-5">
+                    <Feather
+                      name="chevron-left"
+                      size={28}
+                      className=""
+                      onPress={() => navigation.goBack()}
+                    />
+                    <Text className="text-lg font-regular">
+                      Preview Comment
+                    </Text>
+                  </View>
+                </View>
+              ),
+              headerTitleStyle: {
+                fontSize: 16,
+              },
+            })}
+            name="PreviewComment"
+            component={PreviewCommentScreen}
           />
         </Stack.Navigator>
       </NavigationContainer>
