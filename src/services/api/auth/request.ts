@@ -10,14 +10,7 @@ export const Login = async (data: LoginRequest) => {
     headers: { 'Content-Type': 'application/json' },
     data: JSON.stringify(data),
   });
-  // const res = await request(`${API_CONTRACT}/auth/login`, {
-  //   method: 'POST',
-  //   headers: { 'Content-Type': 'application/json' },
-  //   // headers: {
-  //   //   "Content-Type": "application/json",
-  //   // },
-  //   body: JSON.stringify(data),
-  // });
+
   return res as any;
 };
 

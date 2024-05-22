@@ -1,6 +1,4 @@
 import { request } from '@services/axios';
-import { fetcher } from '@services/fetcher';
-import { API_CONTRACT } from '@constants/index';
 import { ICreateCommentRequest } from './types';
 
 export const getComments = async (post_id: string) => {
@@ -16,13 +14,12 @@ export const createComment = async (
   post_id: string,
   token: string
 ) => {
-  const res = await fetcher(`${API_CONTRACT}/comment/${post_id}`, {
+  const res = await request({
+    url: `comment/${post_id}`,
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Authorization: token },
-    // headers: {
-    //   "Content-Type": "application/json",
-    // },
-    body: JSON.stringify(data),
+    data: JSON.stringify(data),
   });
+
   return res;
 };
