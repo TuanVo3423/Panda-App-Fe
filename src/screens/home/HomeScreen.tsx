@@ -1,4 +1,14 @@
-import React, { useState } from 'react';
+import Category from '@components/Home/Category';
+import CourseGallery from '@components/Home/CourseGallery';
+import Quizz from '@components/Home/Quizz';
+import Quotes from '@components/Home/Quotes';
+import SpecialBanner from '@components/Home/SpecialBanner';
+import Study from '@components/Home/Study';
+import Trend from '@components/Home/Trend';
+import TrollFriends from '@components/Home/TrollFriends';
+import Feather from '@expo/vector-icons/Feather';
+import { headerStyles } from '@theme/globalStyles';
+import React from 'react';
 import {
   Image,
   SafeAreaView,
@@ -7,18 +17,6 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import Feather from '@expo/vector-icons/Feather';
-import Category from '@components/Home/Category';
-import Tab from '@components/Home/Tab';
-import { Post } from '@components/Home/Post';
-import Study from '@components/Home/Study';
-import SpecialBanner from '@components/Home/SpecialBanner';
-import CourseGallery from '@components/Home/CourseGallery';
-import Quizz from '@components/Home/Quizz';
-import TrollFriends from '@components/Home/TrollFriends';
-import Quotes from '@components/Home/Quotes';
-import Trend from '@components/Home/Trend';
-import { headerStyles } from '@theme/globalStyles';
 export const HomeScreen = (props: any) => {
   const { navigation } = props;
   return (

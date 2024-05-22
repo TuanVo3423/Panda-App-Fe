@@ -1,7 +1,6 @@
 export * from './Filters';
 export * from './Post';
 export * from './SlideBanner';
-export * from './LifeTab';
 export * from './StudyTab';
 export * from './ProblemTab';
 export * from './BottomSheetForCreatePost';

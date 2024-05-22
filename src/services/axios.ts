@@ -23,8 +23,8 @@ request.interceptors.response.use(
   async (error) => {
     // if (waitForLogout) return;
 
-    const { status, data, config } = error?.response || {};
-    // console.log('error: ', error);
+    const { status, data } = error?.response || {};
+    // // console.log('error: ', error);
     switch (status) {
       case 401: {
         return;
@@ -35,7 +35,7 @@ request.interceptors.response.use(
         //     status: "error",
         //   });
         // }
-        //   console.log('err ath');
+        //   // console.log('err ath');
         // }
         // let token;
         // if (isFetchingNewToken) {

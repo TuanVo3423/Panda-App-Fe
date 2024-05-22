@@ -1,6 +1,5 @@
 import {
   BottomSheetForCreatePost,
-  LifeTab,
   ProblemTab,
   StudyTab,
 } from '@components/community';
@@ -22,7 +21,6 @@ import {
   TabView,
 } from 'react-native-tab-view';
 import { headerStyles } from '@theme/globalStyles';
-import { QueryClient, useQueryClient } from 'react-query';
 
 export const CommunityScreen = ({
   navigation,
@@ -31,25 +29,23 @@ export const CommunityScreen = ({
 
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
-    { key: 'life', title: 'Life talk' },
     { key: 'study', title: 'Study talk' },
     { key: 'problem', title: 'Problem Solution' },
+    // { key: 'study', title: 'Study talk' },
   ]);
   const TAB_MARGIN = 10;
   const bottomSheetModalCreatePostRef = useRef<BottomSheetModal>(null);
 
   const renderScene = SceneMap({
-    life: () => <LifeTab navigation={navigation} />,
-    study: () => <StudyTab />,
-    problem: () => <ProblemTab />,
+    study: () => <StudyTab navigation={navigation} />,
+    // study: () => <StudyTab />,
+    problem: () => <ProblemTab navigation={navigation} />,
   });
   // callbacks
   const handlePresentModalCreatePostPress = useCallback(() => {
-    bottomSheetModalCreatePostRef.current?.present();
+    // bottomSheetModalCreatePostRef.current?.present();
+    navigation.navigate('FormPost');
   }, []);
-  const queryClient = useQueryClient();
-  const data = queryClient.getQueryData('getPosts');
-  console.log('data final: ', data);
   return (
     <>
       <View style={headerStyles.style}>
@@ -101,10 +97,10 @@ export const CommunityScreen = ({
         leftIcon={<FontAwesome5 name="pencil-alt" size={24} color="white" />}
       />
       {/* sheet for create post */}
-      <BottomSheetForCreatePost
+      {/* <BottomSheetForCreatePost
         bottomSheetModalCreatePostRef={bottomSheetModalCreatePostRef}
         navigation={navigation}
-      />
+      /> */}
     </>
   );
 };

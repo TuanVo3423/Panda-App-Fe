@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import React from 'react';
 import useAuthenticatedStore from '@stores/useAuthenticatedStore';
+import { ANOMYMOUS_AVATAR } from '@constants/index';
 
 export const ProfileScreen = ({
   navigation,
@@ -33,7 +34,9 @@ export const ProfileScreen = ({
           <View className="flex-row items-center">
             <Image
               source={{
-                uri: 'https://static.vecteezy.com/system/resources/previews/004/487/805/original/silhouette-of-a-male-head-in-profile-on-a-white-background-avatar-design-free-vector.jpg',
+                uri: UserProfile.user?.avatar
+                  ? UserProfile.user?.avatar
+                  : ANOMYMOUS_AVATAR,
               }}
               className="h-10 w-10 mr-2 rounded-full "
             />

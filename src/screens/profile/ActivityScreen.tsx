@@ -1,5 +1,7 @@
 import { CommentTab, LikeTab, PostTab } from '@components/profile';
+import { ANOMYMOUS_AVATAR } from '@constants/index';
 import { AntDesign } from '@expo/vector-icons';
+import useAuthenticatedStore from '@stores/useAuthenticatedStore';
 import React from 'react';
 import { Image, Text, View, useWindowDimensions } from 'react-native';
 import { ProgressBar } from 'react-native-paper';
@@ -24,17 +26,22 @@ const ActivityScreen = () => {
   ]);
   const layout = useWindowDimensions();
   const TAB_MARGIN = 2;
+  const { UserProfile } = useAuthenticatedStore();
   return (
     <View className="bg-white border-t-[0.2px] border-gray-400 h-full">
       <View className="flex-row items-center space-x-5 p-5">
         <Image
           source={{
-            uri: 'https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/09/meme-che-15.jpg',
+            uri: UserProfile.user?.avatar
+              ? UserProfile.user?.avatar
+              : ANOMYMOUS_AVATAR,
           }}
           className="h-20 w-20 rounded-full"
         />
         <View className="flex-col ">
-          <Text className="font-semibold text-lg">Tuan Dep Trai</Text>
+          <Text className="font-semibold text-lg">
+            {UserProfile.user?.name}
+          </Text>
           <Text>No Pain No Money</Text>
         </View>
       </View>

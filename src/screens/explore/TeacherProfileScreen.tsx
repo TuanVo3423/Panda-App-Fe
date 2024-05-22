@@ -4,10 +4,16 @@ import Feather from '@expo/vector-icons/Feather';
 import { Information } from '@components/Explore/Information';
 import { Statistical } from '@components/Explore/Statistical';
 import Review from '@components/Explore/Review';
+import { AppStackScreenProps } from '@navigation/data';
+import { ANOMYMOUS_AVATAR } from '@constants/index';
 
 type Props = {};
 
-export const TeacherProfileScreen = (props: Props) => {
+export const TeacherProfileScreen = ({
+  route,
+  navigation,
+}: AppStackScreenProps<'TeacherProfile'>) => {
+  const { data } = route.params;
   return (
     <SafeAreaView className="bg-white">
       <ScrollView
@@ -18,14 +24,20 @@ export const TeacherProfileScreen = (props: Props) => {
       >
         <View className="my-5 mx-5 pb-3">
           <Information
-            avaUri="https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/09/meme-che-15.jpg"
-            userName="Tuan Dep Trai"
+            id={data.id}
+            avaUri={data.avaUri ? data.avaUri : ANOMYMOUS_AVATAR}
+            userName={data.userName}
             location="Vietnam-Korean University"
             status="No Pain No Money"
-            noLoves="538"
-            rank="A"
+            noLoves={data.noLoves}
+            rank="B"
           />
-          <Statistical rank="B" answer="14.0K" rating="4.5" measure="" />
+          <Statistical
+            rank="B"
+            answer="14.0K"
+            rating={data.Rating_float}
+            measure=""
+          />
           <Review />
         </View>
       </ScrollView>

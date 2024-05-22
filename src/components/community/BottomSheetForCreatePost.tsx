@@ -27,7 +27,7 @@ export const BottomSheetForCreatePost = ({
   // callbacks
 
   const handleSheetChanges = useCallback((index: number) => {
-    console.log('handleSheetChanges', index);
+    // console.log('handleSheetChanges', index);
   }, []);
   const renderBackdrop = useCallback(
     (props: any) => (

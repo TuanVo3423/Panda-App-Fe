@@ -16,7 +16,12 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import TextRecognition from '@react-native-ml-kit/text-recognition';
 import { RootTabScreenProps } from '@navigation/data';
 import { useGetCaptureResult } from '@services/api/capture/queries';
-import { getCaptureResult } from '@services/api/capture/request';
+import { getCaptureResult, getOCR } from '@services/api/capture/request';
+function cleanString(inputString: string) {
+  // Loại bỏ các ký tự \\, \n
+  let cleanedString = inputString.replace(/\\n|\\/g, '');
+  return cleanedString;
+}
 
 export function CaptureScreen({ navigation }: RootTabScreenProps<'Capture'>) {
   const [image, setImage] = useState<string>('');
@@ -58,30 +63,34 @@ export function CaptureScreen({ navigation }: RootTabScreenProps<'Capture'>) {
   const handleUploadToCloudinary = async () => {
     try {
       setIsUploadingImage(true);
+      console.log('Bat dau upload');
       const data = await handleUploadImage(
         ImagePickerObject as ImagePicker.ImagePickerSuccessResult
       );
-      const result = await TextRecognition.recognize(data.url);
-      console.log('cloudinary url:', data.url);
-      console.log('Recognized text:', result.text);
-
+      console.log('upload thanh cong', data.url);
+      const text = await getOCR(data.url);
       const previewData = await getCaptureResult({
-        query: encodeURIComponent(result.text),
+        query: encodeURIComponent(cleanString(text.input)),
       });
 
       console.log('previewData:', previewData);
 
-      navigation.navigate('PreviewCaptureResult', { data: previewData });
+      navigation.navigate('PreviewCaptureResult', {
+        image_url : data.url,
+        input: text.input,
+        steps: text.steps,
+        data: previewData,
+      });
       // if (!isLoading) {
       // }
 
       // for (let block of result.blocks) {
-      //   console.log('Block text:', block.text);
-      //   console.log('Block frame:', block.frame);
+      //   // console.log('Block text:', block.text);
+      //   // console.log('Block frame:', block.frame);
 
       //   for (let line of block.lines) {
-      //     console.log('Line text:', line.text);
-      //     console.log('Line frame:', line.frame);
+      //     // console.log('Line text:', line.text);
+      //     // console.log('Line frame:', line.frame);
       //   }
       // }
       // after have text, we call api and navigate to next screen with props
@@ -90,7 +99,7 @@ export function CaptureScreen({ navigation }: RootTabScreenProps<'Capture'>) {
       // });
       setIsUploadingImage(false);
     } catch (err) {
-      console.log('err: ', err);
+      // console.log('err: ', err);
     }
   };
 

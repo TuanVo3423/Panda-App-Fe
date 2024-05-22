@@ -15,6 +15,7 @@ import { AppNavigation } from './src/navigation';
 
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { LogBox } from 'react-native';
 // import OneSignal from 'react-native-onesignal';
 // OneSignal.setAppId("api-key");
 // OneSignal.promptForPushNotificationsWithUserResponse()
@@ -22,6 +23,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 const queryClient = new QueryClient();
 
 export default function App() {
+  LogBox.ignoreAllLogs();
   const [fontsLoaded] = useFonts({
     Inter_400Regular,
     Inter_600SemiBold,

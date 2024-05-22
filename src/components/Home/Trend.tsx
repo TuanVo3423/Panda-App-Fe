@@ -1,9 +1,34 @@
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, ActivityIndicator } from 'react-native';
 import React from 'react';
 import { Post } from './Post';
 import Feather from '@expo/vector-icons/Feather';
+import { useGetPosts } from '@services/api/posts/queries';
+import { Center } from 'native-base';
 
 const Trend = () => {
+  const { data, isLoading } = useGetPosts();
+  const render = () => {
+    if (isLoading) {
+      return (
+        <Center flex={1}>
+          <ActivityIndicator size="large" />
+        </Center>
+      );
+    }
+    if (!isLoading && data) {
+      return data
+        .sort((a: any, b: any) => b.upvote - a.upvote)
+        .map((post: any, index: number) => (
+          <Post
+            key={index}
+            avaUri={post.User.avatar}
+            userName={post.User.name}
+            status={post.title}
+            imgUri={post.image_buffering}
+          />
+        ));
+    }
+  };
   return (
     <View className="mt-5 mx-5 border-b-[0.5px] border-gray-200 mb-5 pb-3">
       <View className="flex-row justify-center items-center mb-2">
@@ -18,24 +43,7 @@ const Trend = () => {
         </View>
         <Feather name="chevron-right" size={25} />
       </View>
-      <Post
-        avaUri="https://sm.ign.com/ign_nordic/cover/a/avatar-gen/avatar-generations_prsz.jpg"
-        userName="Phuc Xinh"
-        status="Can cu bu sieng nang"
-        imgUri="https://sm.ign.com/ign_nordic/cover/a/avatar-gen/avatar-generations_prsz.jpg"
-      />
-      <Post
-        avaUri="https://sm.ign.com/ign_nordic/cover/a/avatar-gen/avatar-generations_prsz.jpg"
-        userName="Phuc Xinh"
-        status="Can cu bu sieng nang"
-        imgUri="https://sm.ign.com/ign_nordic/cover/a/avatar-gen/avatar-generations_prsz.jpg"
-      />
-      <Post
-        avaUri="https://sm.ign.com/ign_nordic/cover/a/avatar-gen/avatar-generations_prsz.jpg"
-        userName="Phuc Xinh"
-        status="Can cu bu sieng nang"
-        imgUri="https://sm.ign.com/ign_nordic/cover/a/avatar-gen/avatar-generations_prsz.jpg"
-      />
+      {render()}
     </View>
   );
 };

@@ -9,6 +9,7 @@ import { RootTabScreenProps } from '@navigation/data';
 import { headerStyles } from '@theme/globalStyles';
 import { ScrollView } from 'react-native';
 import useAuthenticatedStore from '@stores/useAuthenticatedStore';
+import { ANOMYMOUS_AVATAR } from '@constants/index';
 
 export const MenuScreen = ({
   navigation,
@@ -22,7 +23,7 @@ export const MenuScreen = ({
     navigation.navigate('Capture');
   };
   const handleAskCommunityPress = () => {
-    navigation.navigate('FormPost', { tab_topic: 1 });
+    navigation.navigate('FormPost');
   };
   const handleCommunityPress = () => {
     navigation.navigate('Community');
@@ -47,7 +48,9 @@ export const MenuScreen = ({
           <View className="flex-row items-center space-x-2">
             <Image
               source={{
-                uri: 'https://static.vecteezy.com/system/resources/previews/011/999/958/non_2x/fire-icon-free-png.png',
+                uri: UserProfile.user?.avatar
+                  ? UserProfile.user?.avatar
+                  : ANOMYMOUS_AVATAR,
               }}
               className="h-16 w-16 mr-2 rounded-full "
             />

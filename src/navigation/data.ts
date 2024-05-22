@@ -11,9 +11,14 @@ export type AppStackParamList = {
   Activity: undefined;
   Profile: undefined;
   MyProfile: undefined;
-  TeacherProfile: undefined;
-  FormPost: { tab_topic: number };
-  PreviewCaptureResult: { data: any };
+  TeacherProfile: { data: any };
+  FormPost: undefined;
+  PreviewCaptureResult: {
+    input: string;
+    steps: Array<string>;
+    data: Array<any>;
+    image_url: string;
+  };
   PreviewComment: { post_id: any };
 };
 

@@ -8,7 +8,7 @@ import BottomSheet, {
 import { AuthStackScreenProps } from '@navigation/data';
 import { Login } from '@services/api/auth/request';
 import useAuthenticatedStore from '@stores/useAuthenticatedStore';
-import { Button, Input } from 'native-base';
+import { Box, Button, Input, Link, useToast } from 'native-base';
 import React, { useCallback, useRef, useState } from 'react';
 import {
   Keyboard,
@@ -24,6 +24,7 @@ export function LoginScreen({
   navigation,
   route,
 }: AuthStackScreenProps<'Login'>) {
+  const toast = useToast();
   const [dataLogin, setDataLogin] = useState({
     email: '',
     password: '',
@@ -31,24 +32,47 @@ export function LoginScreen({
   const sheetRef = useRef<BottomSheet>(null);
   const sheetRef1 = useRef<BottomSheet>(null);
   const { setUserProfile } = useAuthenticatedStore();
-  const { mutateAsync: handleLogin, isLoading } = useMutation(
+  const {
+    mutateAsync: handleLogin,
+    isLoading,
+    isError,
+  } = useMutation(
     async () => {
       const res = await Login({
-        email: dataLogin.email,
-        password: dataLogin.password,
+        email: 'tutor2@gmail.com',
+        password: '342003',
       });
       return res;
     },
     {
       onSuccess: (data) => {
+        toast.show({
+          render: () => {
+            return (
+              <Box bg="#62929E" px="2" py="1" rounded="sm" color="white" mb={5}>
+                "Login success!"
+              </Box>
+            );
+          },
+        });
         setUserProfile(data);
         navigation.navigate('Root');
       },
       onError(error: any) {
-        console.log(error);
+        toast.show({
+          render: () => {
+            return (
+              <Box bg="#ff0000" px="2" py="1" rounded="sm" color="white" mb={5}>
+                {error.message}
+              </Box>
+            );
+          },
+        });
+        // console.log(error);
       },
     }
   );
+  // console.log('isError: ', isError);
   // const navigation = useNavigation();
   const [checked, setChecked] = React.useState('first');
   const [value, setValue] = useState<string>('');
@@ -159,6 +183,8 @@ export function LoginScreen({
                   size="md"
                   placeholder="Nhập mật khẩu..."
                 />
+                <View></View>
+                <Link ml="auto">Chưa có tài khoản?</Link>
                 <Button
                   isLoading={isLoading}
                   onPress={async () => {

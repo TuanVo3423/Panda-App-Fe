@@ -11,10 +11,10 @@ export const getPosts = async () => {
   return res as IPostResponse[];
 };
 
-export const createPosts = async (data: IPostRequest) => {
+export const createPosts = async (data: IPostRequest, token: string) => {
   const res = await fetcher(`${API_CONTRACT}/posts`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', Authorization: token },
     // headers: {
     //   "Content-Type": "application/json",
     // },

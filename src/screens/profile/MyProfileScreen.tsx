@@ -1,6 +1,6 @@
 import { AppStackScreenProps } from '@navigation/data';
 import { Box, Button, useToast } from 'native-base';
-import React from 'react';
+import React, { useState } from 'react';
 import {
   SafeAreaView,
   View,
@@ -13,15 +13,22 @@ import * as ImagePicker from 'expo-image-picker';
 import { headerStyles } from '@theme/globalStyles';
 import { useMutation } from 'react-query';
 import { UpdateProfile } from '@services/api/auth/request';
+import { ANOMYMOUS_AVATAR } from '@constants/index';
+import useAuthenticatedStore from '@stores/useAuthenticatedStore';
+import { handleUploadImage } from '@utils/cloudinary';
+
 export const MyProfileScreen = ({
   navigation,
   route,
 }: AppStackScreenProps<'MyProfile'>) => {
+  const [loading, setLoading] = React.useState<boolean>(false);
   const [username, setUsername] = React.useState('');
-  const [curriculum, setCurriculum] = React.useState('');
-  const [statusmessage, setStatusmessage] = React.useState('');
+  const [email, setEmail] = React.useState('');
   const [image, setImage] = React.useState<string>('');
+  const [ImagePickerObject, setImagePickerObject] =
+    useState<ImagePicker.ImagePickerResult>();
   const toast = useToast();
+  const { UserProfile, setUserProfile } = useAuthenticatedStore();
 
   const {
     data,
@@ -30,14 +37,26 @@ export const MyProfileScreen = ({
   } = useMutation(
     'UpdateProfile',
     async () => {
-      const data = await UpdateProfile({
-        name: username,
-        avatar: image,
+      console.log('image: ', image);
+      const res = await UpdateProfile({
+        data: {
+          name: username,
+          avatar: image,
+          email: email,
+          id: UserProfile.user?.id as string,
+        },
       });
-      return data;
+      console.log(res);
+      return res;
     },
     {
       onSuccess: (data) => {
+        console.log('data: ', data);
+        setLoading(false);
+        setUserProfile({
+          user: data,
+          token: UserProfile.token,
+        });
         toast.show({
           render: () => {
             return (
@@ -48,8 +67,22 @@ export const MyProfileScreen = ({
           },
         });
       },
+      onError: (err) => {
+        console.log('err: ', err);
+      },
     }
   );
+  const handleUploadToCloudinary = async () => {
+    try {
+      setLoading(true);
+      const data = await handleUploadImage(
+        ImagePickerObject as ImagePicker.ImagePickerSuccessResult
+      );
+      setImage(data.url);
+    } catch (err) {
+      // console.log('err: ', err);
+    }
+  };
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
@@ -63,6 +96,7 @@ export const MyProfileScreen = ({
 
     if (result.assets === null) return;
     else {
+      setImagePickerObject(result);
       setImage(result.assets[0].uri);
     }
   };
@@ -73,9 +107,9 @@ export const MyProfileScreen = ({
         <TouchableOpacity onPress={() => pickImage()}>
           <Image
             source={{
-              uri: image
-                ? image
-                : 'https://th.bing.com/th/id/OIP.89QM06UFSCJIYwMiuqxEXQAAAA?w=360&h=422&rs=1&pid=ImgDetMain',
+              uri: UserProfile.user?.avatar
+                ? UserProfile.user?.avatar
+                : ANOMYMOUS_AVATAR,
             }}
             className=" w-20 h-20 rounded-full"
           />
@@ -87,31 +121,35 @@ export const MyProfileScreen = ({
       <Text className="font-semibold text-lg mx-4 pt-5 "> Username</Text>
       <TextInput
         className="h-14 w-100 rounded-2xl bg-white mx-5 my-2 border-2 border-gray-300 px-3 text-gray-400 font-medium"
-        placeholder="Rondeptrai"
+        placeholder={UserProfile.user?.name}
         onChangeText={(newText) => setUsername(newText)}
         value={username}
       ></TextInput>
-      <Text className="font-semibold text-lg mx-4 pt-2 "> Curriculum</Text>
+      <Text className="font-semibold text-lg mx-4 pt-2 "> Email</Text>
       <TextInput
         className="h-14 w-100 rounded-2xl bg-white mx-5 my-2 border-2 border-gray-300 px-3 text-gray-400 font-medium"
-        placeholder="12th"
-        onChangeText={(newText) => setCurriculum(newText)}
-        value={curriculum}
+        placeholder={UserProfile.user?.email || 'Enter Email'}
+        onChangeText={(newText) => setEmail(newText)}
+        value={email}
       ></TextInput>
-      <Text className="font-semibold text-lg mx-4 pt-2 "> Status message</Text>
-      <TextInput
+      {/* <Text className="font-semibold text-lg mx-4 pt-2 "> Status message</Text> */}
+      {/* <TextInput
         className="h-14 w-100 rounded-2xl bg-white mx-5 my-2 border-2 border-gray-300 px-3 text-gray-400 font-medium"
         placeholder="Enter status message"
         onChangeText={(newText) => setStatusmessage(newText)}
         value={statusmessage}
-      ></TextInput>
-      <Text className="font-semibold text-lg mx-4 pt-2 "> Email</Text>
+      ></TextInput> */}
+      {/* <Text className="font-semibold text-lg mx-4 pt-2 "> Email</Text>
       <Text className="font-semibold text-lg mx-5 pt-2 ">
-        tuanvv.21it@vku.udn.vn
-      </Text>
+        {UserProfile.user?.email || 'Enter email'}
+      </Text> */}
       <View className=" flex-row mx-4 justify-end items-center ">
         <Button
-          onPress={async () => await handleUpdateProfile()}
+          isLoading={loading}
+          onPress={async () => {
+            await handleUploadToCloudinary();
+            await handleUpdateProfile();
+          }}
           className="flex items-center justify-center rounded-2xl h-10 w-20 bg-[#62929E]"
         >
           <Text className="font-bold text-white">Save</Text>

@@ -23,7 +23,7 @@ export const BottomSheetForFilter = ({
 }: Props) => {
   const snapPoints = useMemo(() => ['25%', '40%'], []);
   const handleSheetChanges = useCallback((index: number) => {
-    console.log('handleSheetChanges', index);
+    // console.log('handleSheetChanges', index);
   }, []);
   const handleCloseModalPress = useCallback(() => {
     bottomSheetModalFilterRef.current?.close();

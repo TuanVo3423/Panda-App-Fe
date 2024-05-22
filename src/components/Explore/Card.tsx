@@ -1,23 +1,28 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 interface CardProps {
+  id: string;
   avaUri: string;
   status: string;
   userName: string;
   noLoves: string;
   rank: string;
+  Rating_float: number;
   navigation: RootTabScreenProps<'Explore'>['navigation'];
 }
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { RootTabScreenProps } from '@navigation/data';
+import { ANOMYMOUS_AVATAR } from '@constants/index';
 
 export const Card: React.FC<CardProps> = ({
   avaUri,
+  id,
   status,
   userName,
   noLoves,
   rank,
   navigation,
+  Rating_float,
 }) => {
   const [isLiked, setIsLiked] = useState(false);
 
@@ -27,7 +32,9 @@ export const Card: React.FC<CardProps> = ({
 
   const handleImagePress = () => {
     // Chuyển đến màn hình khác khi click vào hình ảnh
-    navigation.navigate('TeacherProfile');
+    navigation.navigate('TeacherProfile', {
+      data: { avaUri, status, userName, noLoves, rank, Rating_float, id },
+    });
   };
 
   let rankColor = ''; // Màu sắc dựa vào rank
@@ -51,7 +58,7 @@ export const Card: React.FC<CardProps> = ({
     <View className="flex-row border-[0.5px] border-gray-300 rounded-lg py-3 mb-2">
       <TouchableOpacity onPress={handleImagePress}>
         <Image
-          source={{ uri: avaUri }}
+          source={{ uri: avaUri ? avaUri : ANOMYMOUS_AVATAR }}
           className="rounded-full h-14 w-14 ml-3"
         />
         <View
@@ -68,7 +75,7 @@ export const Card: React.FC<CardProps> = ({
           {status}
         </Text>
       </View>
-      <View className='flex-col items-center justify-center'>
+      <View className="flex-col items-center justify-center">
         <TouchableOpacity
           onPress={handleLikePress}
           className="flex-col items-center justify-center mr-4"

@@ -49,7 +49,7 @@ export const FormSection = ({ data, setData }: Props) => {
           //   //   ...input,
           //   //   title: e.target.value,
           //   // })
-          //   console.log(event.target.value)
+          //   // console.log(event.target.value)
           // }
           px={0}
           fontSize="16px"

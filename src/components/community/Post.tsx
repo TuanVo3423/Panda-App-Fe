@@ -1,13 +1,15 @@
 import {
   Avatar,
   Box,
+  Flex,
   HStack,
   Heading,
+  Image,
   Stack,
   Text,
   useToast,
 } from 'native-base';
-import React from 'react';
+import React, { useState } from 'react';
 import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 import { IPostResponse, IUpdatePostRequest } from '@services/api/posts/types';
@@ -16,7 +18,9 @@ import { updatePosts } from '@services/api/posts/request';
 import { useAuth } from '@hooks/useAuth';
 import useAuthenticatedStore from '@stores/useAuthenticatedStore';
 import { AppStackScreenProps, RootTabScreenProps } from '@navigation/data';
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, TouchableOpacity } from 'react-native';
+import ImageView from 'react-native-image-viewing';
+import { TYPE_POST } from '@constants/index';
 interface IPostRequest {
   data: IUpdatePostRequest;
   post_id: string;
@@ -31,11 +35,20 @@ export const Post = ({
   type,
   navigation,
   image_buffering,
+  user_id,
+  Comment,
+  User,
 }: IPostResponse & { navigation: any }) => {
   const { UserProfile } = useAuthenticatedStore();
   const [isUpvoted, setIsUpvoted] = React.useState<boolean>(false);
   const [upvoteNumber, setUpvoteNumber] = React.useState<number>(upvote);
+  const [visible, setIsVisible] = useState(false);
   const toast = useToast();
+  console.log(content);
+  if (User) {
+    console.log(User.name);
+  }
+  // // console.log('Comment', Comment.length);
   const {
     mutateAsync: handleUpVote,
     isSuccess,
@@ -47,7 +60,7 @@ export const Post = ({
     },
     {
       onSuccess: (data) => {
-        console.log(data);
+        // console.log(data);
 
         toast.show({
           render: () => {
@@ -60,7 +73,7 @@ export const Post = ({
         });
       },
       onError(error: any) {
-        console.log(error);
+        // console.log(error);
       },
     }
   );
@@ -72,7 +85,7 @@ export const Post = ({
       },
       {
         onSuccess: (data) => {
-          console.log(data);
+          // console.log(data);
 
           toast.show({
             render: () => {
@@ -92,7 +105,7 @@ export const Post = ({
           });
         },
         onError(error: any) {
-          console.log(error);
+          // console.log(error);
         },
       }
     );
@@ -103,18 +116,39 @@ export const Post = ({
       <HStack justifyContent="space-between">
         <HStack space={2} alignItems="center">
           <Avatar
-            source={{ uri: image_buffering ? image_buffering : 'abc' }}
+            source={{ uri: User && (User.avatar ? User.avatar : 'abc') }}
             size="xs"
           />
-          <Text>Tuan Vo</Text>
+          {/* <Text>{User.name}</Text> */}
+          {User && <Text>{User.name}</Text>}
         </HStack>
-        <Text>3 day(s) ago</Text>
+        <Text>3 ngày trước</Text>
       </HStack>
-      <Heading size="lg">{title}</Heading>
-      <Text color="gray.500">{questionContent}</Text>
+      <HStack>
+        <Stack w="full">
+          <Heading size="lg">{title}</Heading>
+          <Text color="gray.500">{questionContent}</Text>
+          <TouchableOpacity onPress={() => setIsVisible(true)}>
+            <Flex w="full">
+              {image_buffering && (
+                <Image
+                  alt="image"
+                  resizeMode="cover"
+                  w="full"
+                  height="150px"
+                  source={{
+                    uri: image_buffering,
+                  }}
+                />
+              )}
+            </Flex>
+          </TouchableOpacity>
+        </Stack>
+      </HStack>
       {/* footer */}
       <HStack justifyContent="space-between">
-        <Tag content={'Daily conversation'} />
+        <Tag content={type === '0' ? 'Study' : 'Problem'} />
+
         {/* <Text></Text> */}
         <HStack space={4}>
           <HStack alignItems="center" space={2}>
@@ -162,12 +196,24 @@ export const Post = ({
               size={24}
               color="black"
             />
-            <Text>0</Text>
+            <Text>{Comment && Comment.length}</Text>
           </HStack>
         </HStack>
       </HStack>
       {/* underline */}
       <Box w="full" h="2px" background="gray.200" />
+      {image_buffering && (
+        <ImageView
+          images={[
+            {
+              uri: image_buffering,
+            },
+          ]}
+          imageIndex={0}
+          visible={visible}
+          onRequestClose={() => setIsVisible(false)}
+        />
+      )}
     </Stack>
   );
 };

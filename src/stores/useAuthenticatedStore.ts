@@ -9,6 +9,8 @@ interface USer {
   updatedAt: string;
   role: string;
   group_id: string;
+  avatar: string;
+  Point_int?: number;
 }
 type IAuth = {
   user?: USer;
