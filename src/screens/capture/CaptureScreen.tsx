@@ -69,17 +69,17 @@ export function CaptureScreen({ navigation }: RootTabScreenProps<'Capture'>) {
       );
       console.log('upload thanh cong', data.url);
       const text = await getOCR(data.url);
-      const previewData = await getCaptureResult({
+      const PostRelated = await getCaptureResult({
         query: encodeURIComponent(cleanString(text.input)),
       });
 
-      console.log('previewData:', previewData);
+      console.log('PostRelated:', PostRelated);
 
       navigation.navigate('PreviewCaptureResult', {
-        image_url : data.url,
+        image_url: data.url,
         input: text.input,
         steps: text.steps,
-        data: previewData,
+        data: PostRelated,
       });
       // if (!isLoading) {
       // }

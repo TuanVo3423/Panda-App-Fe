@@ -3,12 +3,12 @@ import { CaptureRequest, SolvingProblemRequest } from './types';
 
 export const getOCR = async (url_image: string) => {
   const res = await request({
-    url: 'ocr/text',
+    url: 'ocr',
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     data: JSON.stringify({ imgUrl: url_image }),
   });
- 
+
   return res as SolvingProblemRequest;
 };
 

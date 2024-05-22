@@ -54,7 +54,31 @@ export const PreviewResultScreen = ({
   route,
 }: AppStackScreenProps<'PreviewCaptureResult'>) => {
   const { data, input, steps, image_url } = route.params;
-  // console.log(data);
+  const render = () => {
+    if (data.length === 0) {
+      return <Text>Không có bài viết nào liên quan tới vấn đề của bạn</Text>;
+    } else {
+      return data.map((post: any) => {
+        return (
+          <Post
+            key={post.id}
+            id={post.id}
+            content={post.content}
+            questionContent={post.questionContent}
+            title={post.title}
+            upvote={post.upvote}
+            type={post.type}
+            group_id={post.group_id}
+            navigation={navigation}
+            image_buffering={post.image_buffering}
+            user_id={post.user_id}
+            Comment={post.Comment}
+            User={post.User}
+          />
+        );
+      });
+    }
+  };
   return (
     <ScrollView flex={1} paddingX={4}>
       <Stack w="full">
@@ -67,32 +91,14 @@ export const PreviewResultScreen = ({
         />
         <Heading>Các bước giải</Heading>
         <Stack space={2}>
-          {fake.steps.map((step, idx) => (
+          {steps.map((step, idx) => (
             <Text>{step}</Text>
           ))}
         </Stack>
       </Stack>
       <VStack space={3} p={4}>
         <Heading>Các bài viết liên quan</Heading>
-        {posts.map((post: any) => {
-          return (
-            <Post
-              key={post.id}
-              id={post.id}
-              content={post.content}
-              questionContent={post.questionContent}
-              title={post.title}
-              upvote={post.upvote}
-              type={post.type}
-              group_id={post.group_id}
-              navigation={navigation}
-              image_buffering={post.image_buffering}
-              user_id={post.user_id}
-              Comment={post.Comment}
-              User={post.User}
-            />
-          );
-        })}
+        {render()}
       </VStack>
     </ScrollView>
   );
