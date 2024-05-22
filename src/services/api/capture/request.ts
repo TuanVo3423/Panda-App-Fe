@@ -14,11 +14,11 @@ export const getOCR = async (url_image: string) => {
 
 export const getCaptureResult = async (data: CaptureRequest) => {
   const res = await request({
-    url: 'search?questionQuery=${data.query}',
-    method: 'GET',
+    url: 'search',
+    method: 'POST',
     headers: { 'Content-Type': 'application/json' },
+    data: JSON.stringify(data),
   });
-  console.log('da encode:', data.query);
 
   return res;
 };

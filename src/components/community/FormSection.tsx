@@ -40,7 +40,6 @@ export const FormSection = ({ data, setData }: Props) => {
             setData({
               ...data,
               title: text,
-              questionContent: text,
             });
           }}
           // onChange={handleChange}
@@ -65,6 +64,7 @@ export const FormSection = ({ data, setData }: Props) => {
             setData({
               ...data,
               content: text,
+              questionContent: text,
             });
           }}
           px={0}

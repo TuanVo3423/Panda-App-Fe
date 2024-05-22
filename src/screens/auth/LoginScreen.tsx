@@ -39,8 +39,8 @@ export function LoginScreen({
   } = useMutation(
     async () => {
       const res = await Login({
-        email: 'tutor2@gmail.com',
-        password: '342003',
+        email: dataLogin.email,
+        password: dataLogin.password,
       });
       return res;
     },

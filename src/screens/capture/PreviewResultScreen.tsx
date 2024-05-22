@@ -54,6 +54,7 @@ export const PreviewResultScreen = ({
   route,
 }: AppStackScreenProps<'PreviewCaptureResult'>) => {
   const { data, input, steps, image_url } = route.params;
+
   const render = () => {
     if (data.length === 0) {
       return <Text>Không có bài viết nào liên quan tới vấn đề của bạn</Text>;
@@ -92,11 +93,13 @@ export const PreviewResultScreen = ({
         <Heading>Các bước giải</Heading>
         <Stack space={2}>
           {steps.map((step, idx) => (
-            <Text>{step}</Text>
+            <Text key={idx}>
+              {Object.keys(step)[0]}: {Object.values(step)[0]}
+            </Text>
           ))}
         </Stack>
       </Stack>
-      <VStack space={3} p={4}>
+      <VStack space={3} mt={4}>
         <Heading>Các bài viết liên quan</Heading>
         {render()}
       </VStack>

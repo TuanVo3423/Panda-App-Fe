@@ -63,17 +63,13 @@ export function CaptureScreen({ navigation }: RootTabScreenProps<'Capture'>) {
   const handleUploadToCloudinary = async () => {
     try {
       setIsUploadingImage(true);
-      console.log('Bat dau upload');
       const data = await handleUploadImage(
         ImagePickerObject as ImagePicker.ImagePickerSuccessResult
       );
-      console.log('upload thanh cong', data.url);
       const text = await getOCR(data.url);
       const PostRelated = await getCaptureResult({
-        query: encodeURIComponent(cleanString(text.input)),
+        query: text.input,
       });
-
-      console.log('PostRelated:', PostRelated);
 
       navigation.navigate('PreviewCaptureResult', {
         image_url: data.url,

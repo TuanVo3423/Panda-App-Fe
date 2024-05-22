@@ -62,7 +62,6 @@ export const PreviewCommentScreen = ({
       const data = await handleUploadImage(
         ImagePickerObject as ImagePicker.ImagePickerSuccessResult
       );
-      console.log(data.url);
       setImage(data.url);
     } catch (err) {
       // console.log('err: ', err);

@@ -44,10 +44,7 @@ export const Post = ({
   const [upvoteNumber, setUpvoteNumber] = React.useState<number>(upvote);
   const [visible, setIsVisible] = useState(false);
   const toast = useToast();
-  console.log(content);
-  if (User) {
-    console.log(User.name);
-  }
+
   // // console.log('Comment', Comment.length);
   const {
     mutateAsync: handleUpVote,

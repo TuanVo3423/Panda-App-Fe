@@ -37,7 +37,6 @@ export const MyProfileScreen = ({
   } = useMutation(
     'UpdateProfile',
     async () => {
-      console.log('image: ', image);
       const res = await UpdateProfile({
         data: {
           name: username,
@@ -46,12 +45,10 @@ export const MyProfileScreen = ({
           id: UserProfile.user?.id as string,
         },
       });
-      console.log(res);
       return res;
     },
     {
       onSuccess: (data) => {
-        console.log('data: ', data);
         setLoading(false);
         setUserProfile({
           user: data,
