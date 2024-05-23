@@ -38,7 +38,7 @@ export const ExploreScreen = ({
             navigation={navigation}
             avaUri={tutor.avatar}
             userName={tutor.name}
-            status="Moi nhat"
+            status="New"
             noLoves={tutor.Point_int}
             rank="B"
             Rating_float={tutor.Rating_float}
@@ -50,7 +50,7 @@ export const ExploreScreen = ({
     <SafeAreaView className="bg-white pt-2">
       {/* Header */}
       <View style={headerStyles.style}>
-        <Text className="text-lg font-semibold">Khám phá</Text>
+        <Text className="text-lg font-semibold">Explore</Text>
       </View>
 
       <ScrollView

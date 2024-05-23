@@ -38,7 +38,7 @@ export const HomeScreen = (props: any) => {
                 }}
                 className="h-4 w-4 mr-2"
               />
-              <Text className="text-[15px] font-semibold">Xu cua toi</Text>
+              <Text className="text-[15px] font-semibold">My coins</Text>
             </TouchableOpacity>
             <Feather
               name="user"

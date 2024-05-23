@@ -38,8 +38,8 @@ export function LoginScreen({
   } = useMutation(
     async () => {
       const res = await Login({
-        email: dataLogin.email,
-        password: dataLogin.password,
+        email: 'ron@gmail.com',
+        password: '123456',
       });
       return res;
     },
