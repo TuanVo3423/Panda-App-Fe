@@ -31,8 +31,8 @@ export const MenuScreen = ({
   return (
     <View className="bg-white">
       <View
-        // style={headerStyles.style}
-        className="bg-white flex-row items-center mt-5 px-5 py-3 border-b-[0.6px] border-gray-300"
+        style={headerStyles.style}
+        className="bg-white flex-row items-center mt-3 px-5 py-3 border-b-[0.6px] border-gray-300"
       >
         <Text className="text-2xl flex-1 font-semibold">Menu</Text>
         <EvilIcons name="gear" size={25} />
@@ -68,9 +68,10 @@ export const MenuScreen = ({
         <View className=" bg-white rounded-lg flex-row border-b-[10px] border-[#f1f1f1] pb-10 justify-center h-30 w-100 m-5  ">
           <TouchableOpacity className="bg-[#f1f1f1] rounded-xl h-20 w-50 mr-5 flex-1 items-center justify-center">
             <View className="h-5 w-20 items-center ">
+              {/*  */}
               <Image
                 source={{
-                  uri: 'https://cdn.aitimes.kr/news/photo/202110/22767_34176_2339.jpg',
+                  uri: 'https://res.cloudinary.com/dftz2tmpm/image/upload/v1716476248/panda-vku/hdhrrucpoe5wexcf8usv.png',
                 }}
                 className="object-cover h-5 w-10"
               />

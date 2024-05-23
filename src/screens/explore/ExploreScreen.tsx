@@ -50,11 +50,12 @@ export const ExploreScreen = ({
     <SafeAreaView className="bg-white pt-2">
       {/* Header */}
       <View style={headerStyles.style}>
-        <Text className="text-lg font-semibold">Explore</Text>
+        <Text className="text-lg font-semibold">Khám phá</Text>
       </View>
 
       <ScrollView
         contentContainerStyle={{
+          height: '100%',
           paddingBottom: 50,
           backgroundColor: 'white',
         }}

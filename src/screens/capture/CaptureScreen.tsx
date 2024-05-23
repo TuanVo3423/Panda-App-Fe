@@ -6,6 +6,7 @@ import {
   Button,
   HStack,
   Image,
+  Stack,
   Text,
   VStack,
   View,
@@ -128,50 +129,70 @@ export function CaptureScreen({ navigation }: RootTabScreenProps<'Capture'>) {
       );
     }
     return (
-      <VStack
-        w="full"
-        mt={4}
-        h={500}
-        p={4}
-        background="white"
-        rounded="md"
-        borderWidth="2px"
-        borderStyle={'dashed'}
-        alignItems="center"
-        space={5}
-      >
-        <TouchableOpacity onPress={pickImage}>
-          <Image
+      <Stack space={4}>
+        <VStack
+          w="full"
+          mt={4}
+          maxH="400px"
+          height="400px"
+          p={4}
+          borderColor="#62929E"
+          background="white"
+          rounded="md"
+          borderWidth="2px"
+          alignItems="center"
+          space={5}
+        >
+          <TouchableOpacity onPress={pickImage}>
+            <Stack
+              h="full"
+              w="full"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <AntDesign name="clouduploado" size={28} color="gray" />
+              <Text fontSize="16px" color="gray.500">
+                Chọn ảnh
+              </Text>
+            </Stack>
+            {/* <Image
             backgroundColor="transparent"
             source={require('./upload_image.png')}
             w={200}
             h={200}
             rounded="full"
             alt="img_upload"
-          />
-        </TouchableOpacity>
-        <Text
-          onPress={pickImage}
-          fontSize="20px"
-          fontWeight="bold"
-          color="#62929E"
-        >
-          Upload you photo
-        </Text>
-        <Text fontSize="24px" fontWeight="extrabold">
-          OR
-        </Text>
-        <Button
-          rounded="xl"
-          onPress={takePhoto}
-          variant="outline"
-          background="#62929E"
-        >
-          <Text fontSize="20px" fontWeight="bold" color="white">
-            Take a photo
-          </Text>
-        </Button>
-      </VStack>
+          /> */}
+          </TouchableOpacity>
+          {/* <Text
+            onPress={pickImage}
+            fontSize="20px"
+            fontWeight="bold"
+            color="#62929E"
+          >
+            Upload you photo
+          </Text> */}
+        </VStack>
+        <Stack space={4}>
+          <HStack alignItems="center" w="full">
+            <View w="42%" h="2px" background="#62929E"></View>
+            <Text flex={1} textAlign="center" fontSize="20px" color="gray.500">
+              OR
+            </Text>
+            <View w="42%" h="2px" background="#62929E"></View>
+          </HStack>
+          <Button
+            rounded="xl"
+            onPress={takePhoto}
+            variant="outline"
+            background="#62929E"
+          >
+            <Text fontSize="20px" fontWeight="bold" color="white">
+              Mở camera
+            </Text>
+          </Button>
+        </Stack>
+      </Stack>
     );
   };
 
@@ -189,7 +210,7 @@ export function CaptureScreen({ navigation }: RootTabScreenProps<'Capture'>) {
           </Text>
         </Button>
       </View>
-      <View h="full" p={4}>
+      <View background="white" h="full" p={4}>
         {renderImage()}
         {image && (
           <HStack mt={4} justifyContent="space-between">

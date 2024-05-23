@@ -62,8 +62,8 @@ export const Post = ({
         toast.show({
           render: () => {
             return (
-              <Box bg="#62929E" px="2" py="1" rounded="sm" color="white" mb={5}>
-                Like Post Success!
+              <Box bg="#62929E" px="2" py="1" rounded="sm" mb={5}>
+                <Text color="white">Like Post Success!</Text>
               </Box>
             );
           },
@@ -95,7 +95,7 @@ export const Post = ({
                   color="white"
                   mb={5}
                 >
-                  Unlike Post Success!
+                  <Text color="white">Unlike Post Success!</Text>
                 </Box>
               );
             },

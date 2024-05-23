@@ -103,7 +103,7 @@ export const FormPostScreen = ({
           render: () => {
             return (
               <Box bg="#62929E" px="2" py="1" rounded="sm" color="white" mb={5}>
-                Create Post Success!
+                <Text color="white">Create Post Success!</Text>
               </Box>
             );
           },

@@ -92,7 +92,7 @@ export function AppNavigation() {
                 fontSize: 16,
               },
               header: () => (
-                <View className="bg-white pb-4 pt-9 px-5 border-b-[0.5px] border-gray-300">
+                <View className="bg-white pb-4 pt-6 px-5 border-b-[0.5px] border-gray-300">
                   <View className=" flex-row items-center justify-between space-x-5">
                     <HStack space={4}>
                       <Feather

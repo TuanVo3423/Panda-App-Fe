@@ -1,12 +1,11 @@
 import { AppStackScreenProps } from '@navigation/data';
-import { Box, Button, useToast } from 'native-base';
+import { Box, Button, Text, useToast } from 'native-base';
 import React, { useState } from 'react';
 import {
   SafeAreaView,
   View,
   Image,
   TouchableOpacity,
-  Text,
   TextInput,
 } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
@@ -58,7 +57,7 @@ export const MyProfileScreen = ({
           render: () => {
             return (
               <Box bg="#62929E" px="2" py="1" rounded="sm" color="white" mb={5}>
-                Update Profile Success!
+                <Text color="white">Update Profile Success</Text>
               </Box>
             );
           },

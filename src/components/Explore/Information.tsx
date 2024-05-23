@@ -1,14 +1,8 @@
-import {
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-  ActivityIndicator,
-} from 'react-native';
+import { View, Image, TouchableOpacity, ActivityIndicator } from 'react-native';
 import React, { useState } from 'react';
 import { useMutation, useQueryClient } from 'react-query';
 import { likeTutor } from '@services/api/explore/request';
-import { Box, useToast } from 'native-base';
+import { Box, useToast, Text } from 'native-base';
 interface InformationProps {
   id: string;
   avaUri: string;
@@ -51,7 +45,7 @@ export const Information: React.FC<InformationProps> = ({
           render: () => {
             return (
               <Box bg="#62929E" px="2" py="1" rounded="sm" color="white" mb={5}>
-                Cập nhật thành công
+                <Text color="white">Cập nhật thành công</Text>
               </Box>
             );
           },

@@ -22,10 +22,16 @@ export const HomeScreen = (props: any) => {
   return (
     <SafeAreaView className="">
       <View style={headerStyles.style}>
-        <View className="flex-row items-center justify-center pt-2">
-          <Text className="flex-1">LOGO PANDA</Text>
+        <View className="flex-row items-center justify-center pt-2 -mb-1">
+          <Image
+            source={{
+              uri: 'https://res.cloudinary.com/dftz2tmpm/image/upload/v1716476248/panda-vku/hdhrrucpoe5wexcf8usv.png',
+            }}
+            className="h-4 w-4 flex-1 ml-[-20px]"
+          />
+          {/* <Text className="flex-1">LOGO PANDA</Text> */}
           <View className="flex-row justify-center items-center space-x-3">
-            <TouchableOpacity className="bg-[#f1f1f1] rounded-3xl px-3 py-2 flex-row items-center justify-center">
+            <TouchableOpacity className="bg-[#f1f1f1] rounded-3xl px-3 py-1 flex-row items-center justify-center">
               <Image
                 source={{
                   uri: 'https://static.vecteezy.com/system/resources/previews/019/046/339/original/gold-coin-money-symbol-icon-png.png',
@@ -73,7 +79,7 @@ export const HomeScreen = (props: any) => {
         {/* Question */}
         <Quizz />
         {/* Troll  */}
-        <TrollFriends />
+        {/* <TrollFriends /> */}
         {/* Quotes  */}
         <Quotes content="Miet mai quay tay van may se toi" />
       </ScrollView>

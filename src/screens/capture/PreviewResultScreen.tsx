@@ -1,6 +1,7 @@
 import { Post } from '@components/community';
 import { AppStackScreenProps } from '@navigation/data';
 import {
+  Box,
   Heading,
   Image,
   ScrollView,
@@ -81,8 +82,8 @@ export const PreviewResultScreen = ({
     }
   };
   return (
-    <ScrollView flex={1} paddingX={4}>
-      <Stack w="full">
+    <ScrollView background="white" flex={1} paddingX={4}>
+      <Stack w="full" space={4}>
         <Image
           w="full"
           height="100px"
@@ -90,6 +91,7 @@ export const PreviewResultScreen = ({
           alt="problem_img"
           source={{ uri: image_url }}
         />
+        <Box w="full" h="2px" background="gray.200" />
         <Heading>Các bước giải</Heading>
         <Stack space={2}>
           {steps.map((step, idx) => (
@@ -98,6 +100,7 @@ export const PreviewResultScreen = ({
             </Text>
           ))}
         </Stack>
+        <Box w="full" h="2px" background="gray.200" />
       </Stack>
       <VStack space={3} mt={4}>
         <Heading>Các bài viết liên quan</Heading>

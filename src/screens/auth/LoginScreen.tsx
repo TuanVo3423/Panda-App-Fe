@@ -8,12 +8,11 @@ import BottomSheet, {
 import { AuthStackScreenProps } from '@navigation/data';
 import { Login } from '@services/api/auth/request';
 import useAuthenticatedStore from '@stores/useAuthenticatedStore';
-import { Box, Button, Input, Link, useToast } from 'native-base';
+import { Box, Button, Image, Input, Link, Text, useToast } from 'native-base';
 import React, { useCallback, useRef, useState } from 'react';
 import {
   Keyboard,
   SafeAreaView,
-  Text,
   TouchableOpacity,
   TouchableWithoutFeedback,
   View,
@@ -50,7 +49,7 @@ export function LoginScreen({
           render: () => {
             return (
               <Box bg="#62929E" px="2" py="1" rounded="sm" color="white" mb={5}>
-                "Login success!"
+                <Text color="white">Login success!</Text>
               </Box>
             );
           },
@@ -63,7 +62,7 @@ export function LoginScreen({
           render: () => {
             return (
               <Box bg="#ff0000" px="2" py="1" rounded="sm" color="white" mb={5}>
-                {error.message}
+                <Text color="white"> {error.message}</Text>
               </Box>
             );
           },
@@ -98,8 +97,13 @@ export function LoginScreen({
     <GestureHandlerRootView style={{ flex: 1 }}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <SafeAreaView className="bg-[#f9f9f9] h-full ">
-          <View className=" flex-row mt-5 mx-5">
-            <Text className="text-lg flex-1">Đây là Logo</Text>
+          <View className=" flex-row mt-5 mx-5 justify-between">
+            <Image
+              source={{
+                uri: 'https://res.cloudinary.com/dftz2tmpm/image/upload/v1716476248/panda-vku/hdhrrucpoe5wexcf8usv.png',
+              }}
+              className="h-full w-32"
+            />
             <TouchableOpacity
               className="flex-row items-center space-x-2"
               onPress={() => {
@@ -186,6 +190,7 @@ export function LoginScreen({
                 <View></View>
                 <Link ml="auto">Chưa có tài khoản?</Link>
                 <Button
+                  background="#62929E"
                   isLoading={isLoading}
                   onPress={async () => {
                     await handleLogin();

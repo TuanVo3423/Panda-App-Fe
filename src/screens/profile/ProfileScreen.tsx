@@ -66,7 +66,7 @@ export const ProfileScreen = ({
         <TouchableOpacity className=" mx-5 h-10 w-100  flex-row  items-center  pt-5 ">
           <Image
             source={{
-              uri: 'https://cdn.aitimes.kr/news/photo/202110/22767_34176_2339.jpg',
+              uri: 'https://res.cloudinary.com/dftz2tmpm/image/upload/v1716476248/panda-vku/hdhrrucpoe5wexcf8usv.png',
             }}
             className=" object-cover h-5 w-10"
           />
@@ -93,7 +93,7 @@ export const ProfileScreen = ({
           </View>
           <Image
             source={{
-              uri: 'https://cdn.aitimes.kr/news/photo/202110/22767_34176_2339.jpg',
+              uri: 'https://res.cloudinary.com/dftz2tmpm/image/upload/v1716476248/panda-vku/hdhrrucpoe5wexcf8usv.png',
             }}
             className=" h-10 w-20 flex-end"
           />

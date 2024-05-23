@@ -18,6 +18,7 @@ const Trend = () => {
     if (!isLoading && data) {
       return data
         .sort((a: any, b: any) => b.upvote - a.upvote)
+        .slice(0, 3)
         .map((post: any, index: number) => (
           <Post
             key={index}

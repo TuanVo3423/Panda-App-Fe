@@ -107,7 +107,7 @@ export const PreviewCommentScreen = ({
                   color="white"
                   mb={5}
                 >
-                  Comment Success!
+                  <Text color="white">Comment Success</Text>
                 </Box>
               );
             },
