@@ -34,7 +34,7 @@ const Trend = () => {
     <View className="mt-5 mx-5 border-b-[0.5px] border-gray-200 mb-5 pb-3">
       <View className="flex-row justify-center items-center mb-2">
         <View className="flex-row items-center flex-1">
-          <Text className="font-bold text-lg">Bai dang HOT nhat</Text>
+          <Text className="font-bold text-lg">HOTTEST posts</Text>
           <Image
             source={{
               uri: 'https://static.vecteezy.com/system/resources/previews/011/999/958/non_2x/fire-icon-free-png.png',

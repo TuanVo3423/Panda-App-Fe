@@ -7,10 +7,10 @@ import { Feedback } from './Feedback';
 
 const Study = () => {
   const [activeSlide, setActiveSlide] = useState(0);
-  const [activeTab, setActiveTab] = useState<string>('Giới thiệu');
-  const tabs: string[] = ['Giới thiệu', 'Giáo viên', 'Đánh giá'];
+  const [activeTab, setActiveTab] = useState<string>('Intro');
+  const tabs: string[] = ['Intro', 'Teachers', 'Feedback'];
   const tabContent: Record<string, JSX.Element> = {
-    'Giới thiệu': (
+    'Intro': (
       <Image
         source={{
           uri: 'https://warmgun.com/wp-content/uploads/2021/10/banner-elearning.png',
@@ -18,7 +18,7 @@ const Study = () => {
         className="w-fit h-[200px] rounded-xl"
       />
     ),
-    'Giáo viên': (
+    'Teachers': (
       <Image
         source={{
           uri: 'https://warmgun.com/wp-content/uploads/2021/10/banner-elearning.png',
@@ -26,7 +26,7 @@ const Study = () => {
         className="w-fit h-[200px] rounded-xl"
       />
     ),
-    'Đánh giá': (
+    'Feedback': (
       <View>
         <View className="border-[0.5px] h-[200px] border-gray-400 rounded-xl">
           <Slick
@@ -115,7 +115,7 @@ const Study = () => {
         <View className="flex-row items-center justify-center pr-2 mb-1">
           <Text className="font-bold text-lg text-[#62929E]">Study</Text>
         </View>
-        {['Giới thiệu', 'Giáo viên', 'Đánh giá'].map((tab) => (
+        {['Intro', 'Teachers', 'Feedback'].map((tab) => (
           <Tab
             key={tab}
             title={tab}
@@ -127,7 +127,7 @@ const Study = () => {
       <View className="flex-col space-y-7">
         <View className="">{tabContent[activeTab]}</View>
         <View className="flex-row items-center justify-center space-x-2 left-28 -top-5">
-          <Text className="text-base font-semibold">Tim hieu them</Text>
+          <Text className="text-base font-semibold">Get more</Text>
           <Feather name="chevron-right" color={'gray'} size={20} />
         </View>
       </View>

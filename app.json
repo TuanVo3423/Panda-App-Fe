@@ -14,9 +14,7 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.angeloricardoweb.yourapp"
@@ -26,9 +24,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "permissions": [
-        "android.permission.RECORD_AUDIO"
-      ],
+      "permissions": ["android.permission.RECORD_AUDIO"],
       "package": "com.angeloricardoweb.yourapp"
     },
     "web": {
@@ -66,8 +62,7 @@
               ]
             }
           }
-        },
-        "projectId": "e23ba2e3-1bb9-47ee-98f7-258dfb2e62db"
+        }
       }
     }
   }

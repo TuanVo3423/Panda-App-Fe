@@ -1,4 +1,4 @@
-export const API_CONTRACT = 'http://192.168.1.13:5000/api/';
+export const API_CONTRACT = 'http://192.168.1.4:5000/api/';
 
 export enum TYPE_POST {
   STUDY = '0',
