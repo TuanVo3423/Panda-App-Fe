@@ -1,10 +1,16 @@
-import { LanguagueCheck, LoginButton } from '@components/auth';
+import {
+  LanguagueCheck,
+  LoginButton,
+  LoginForm,
+  RegisterForm,
+} from '@components/auth';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Feather from '@expo/vector-icons/Feather';
 import BottomSheet, {
   BottomSheetBackdrop,
   BottomSheetView,
 } from '@gorhom/bottom-sheet';
+import { Ionicons } from '@expo/vector-icons';
 import { AuthStackScreenProps } from '@navigation/data';
 import { Login } from '@services/api/auth/request';
 import useAuthenticatedStore from '@stores/useAuthenticatedStore';
@@ -23,57 +29,9 @@ export function LoginScreen({
   navigation,
   route,
 }: AuthStackScreenProps<'Login'>) {
-  const toast = useToast();
-  const [dataLogin, setDataLogin] = useState({
-    email: '',
-    password: '',
-  });
   const sheetRef = useRef<BottomSheet>(null);
   const sheetRef1 = useRef<BottomSheet>(null);
-  const { setUserProfile } = useAuthenticatedStore();
-  const {
-    mutateAsync: handleLogin,
-    isLoading,
-    isError,
-  } = useMutation(
-    async () => {
-      const res = await Login({
-        email: 'ron@gmail.com',
-        password: '123456',
-      });
-      return res;
-    },
-    {
-      onSuccess: (data) => {
-        toast.show({
-          render: () => {
-            return (
-              <Box bg="#62929E" px="2" py="1" rounded="sm" color="white" mb={5}>
-                <Text color="white">Login success!</Text>
-              </Box>
-            );
-          },
-        });
-        setUserProfile(data);
-        navigation.navigate('Root');
-      },
-      onError(error: any) {
-        toast.show({
-          render: () => {
-            return (
-              <Box bg="#ff0000" px="2" py="1" rounded="sm" color="white" mb={5}>
-                <Text color="white"> {error.message}</Text>
-              </Box>
-            );
-          },
-        });
-        // console.log(error);
-      },
-    }
-  );
-  // console.log('isError: ', isError);
-  // const navigation = useNavigation();
-  const [checked, setChecked] = React.useState('first');
+  const [isLogin, setIsLogin] = useState<boolean>(true);
   const [value, setValue] = useState<string>('');
   const snapPoints = ['30%'];
   const snapPoints1 = ['76%'];
@@ -102,7 +60,7 @@ export function LoginScreen({
               source={{
                 uri: 'https://res.cloudinary.com/dftz2tmpm/image/upload/v1716476248/panda-vku/hdhrrucpoe5wexcf8usv.png',
               }}
-              className="h-full w-32"
+              className="h-full w-32 ml-[-20px]"
             />
             <TouchableOpacity
               className="flex-row items-center space-x-2"
@@ -123,6 +81,7 @@ export function LoginScreen({
               <LoginButton
                 IconUri="https://cdn.iconscout.com/icon/free/png-256/free-google-1772223-1507807.png"
                 descript="Tiếp tục với Google"
+                // bgColor="#1977f3"
                 bgColor="white"
                 txtColor="black"
                 onPress={async () => {
@@ -164,55 +123,16 @@ export function LoginScreen({
           <BottomSheet
             ref={sheetRef}
             index={-1}
-            snapPoints={snapPoints}
+            snapPoints={isLogin ? ['30%'] : ['55%']}
             enablePanDownToClose={true}
             backdropComponent={renderBackdrop}
           >
             <BottomSheetView>
-              <View className="flex-col space-y-2 mx-5">
-                <Input
-                  onChangeText={(text) =>
-                    setDataLogin({ ...dataLogin, email: text })
-                  }
-                  value={dataLogin.email}
-                  size="md"
-                  placeholder="Nhập email..."
-                />
-                <View></View>
-                <Input
-                  onChangeText={(text) =>
-                    setDataLogin({ ...dataLogin, password: text })
-                  }
-                  value={dataLogin.password}
-                  size="md"
-                  placeholder="Nhập mật khẩu..."
-                />
-                <View></View>
-                <Link ml="auto">Chưa có tài khoản?</Link>
-                <Button
-                  background="#62929E"
-                  isLoading={isLoading}
-                  onPress={async () => {
-                    await handleLogin();
-                  }}
-                >
-                  <Text className="text-md text-white font-bold">
-                    Đăng nhập
-                  </Text>
-                </Button>
-                {/* <LoginButton
-                  IconUri="https://cdn.haitrieu.com/wp-content/uploads/2022/01/Logo-Zalo-Arc.png"
-                  descript="Tiếp tục với Zalo"
-                  bgColor="#048fe4"
-                  txtColor="white"
-                />
-                <LoginButton
-                  IconUri="https://icons.veryicon.com/png/o/business/enterprise-common-fill-icon/mail-fill-1.png"
-                  descript="Tiếp tục với Email"
-                  bgColor="#e8e8e8"
-                  txtColor="black"
-                /> */}
-              </View>
+              {isLogin ? (
+                <LoginForm setIsLogin={setIsLogin} navigation={navigation} />
+              ) : (
+                <RegisterForm setIsLogin={setIsLogin} navigation={navigation} />
+              )}
             </BottomSheetView>
           </BottomSheet>
 

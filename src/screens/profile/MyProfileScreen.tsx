@@ -28,6 +28,7 @@ export const MyProfileScreen = ({
     useState<ImagePicker.ImagePickerResult>();
   const toast = useToast();
   const { UserProfile, setUserProfile } = useAuthenticatedStore();
+  const isDisabled = username === '' || email === '';
 
   const {
     data,
@@ -142,6 +143,7 @@ export const MyProfileScreen = ({
       <View className=" flex-row mx-4 justify-end items-center ">
         <Button
           isLoading={loading}
+          isDisabled={isDisabled}
           onPress={async () => {
             await handleUploadToCloudinary();
             await handleUpdateProfile();

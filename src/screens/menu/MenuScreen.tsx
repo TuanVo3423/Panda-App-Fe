@@ -15,7 +15,7 @@ export const MenuScreen = ({
   navigation,
   route,
 }: RootTabScreenProps<'Menu'>) => {
-  const { UserProfile } = useAuthenticatedStore();
+  const { UserProfile, setUserProfile } = useAuthenticatedStore();
   const handleProfilePress = () => {
     navigation.navigate('Profile');
   };
@@ -62,7 +62,7 @@ export const MenuScreen = ({
             className=" rounded-lg border-[0.5px] border-gray-400 px-2 bg-[#62929E] h-9 w-25 justify-center items-center "
             onPress={handleProfilePress}
           >
-            <Text className="text-xs font-bold text-white">Trang ca nhan</Text>
+            <Text className="text-xs font-bold text-white">My profile</Text>
           </TouchableOpacity>
         </View>
         <View className=" bg-white rounded-lg flex-row border-b-[10px] border-[#f1f1f1] pb-10 justify-center h-30 w-100 m-5  ">
@@ -138,6 +138,24 @@ export const MenuScreen = ({
             onPress={handleCommunityPress}
           >
             <Text className="text-base  flex-1">Community</Text>
+            <AntDesign
+              name="right"
+              size={20}
+              color="gray"
+              className=" flex-end"
+            />
+          </TouchableOpacity>
+        </View>
+        <View className="p-5">
+          <Text className="text-lg font-bold">Account</Text>
+          <TouchableOpacity
+            className="pt-5 flex-row items-center "
+            onPress={() => {
+              setUserProfile({});
+              navigation.navigate('Auth');
+            }}
+          >
+            <Text className="text-base  flex-1">Logout</Text>
             <AntDesign
               name="right"
               size={20}

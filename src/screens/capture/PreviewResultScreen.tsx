@@ -58,7 +58,11 @@ export const PreviewResultScreen = ({
 
   const render = () => {
     if (data.length === 0) {
-      return <Text>Không có bài viết nào liên quan tới vấn đề của bạn</Text>;
+      return (
+        <Text fontSize="14px" color="gray.600">
+          There are no articles related to your issue
+        </Text>
+      );
     } else {
       return data.map((post: any) => {
         return (
@@ -76,6 +80,8 @@ export const PreviewResultScreen = ({
             user_id={post.user_id}
             Comment={post.Comment}
             User={post.User}
+            createdAt={post.createdAt}
+            updatedAt={post.updatedAt}
           />
         );
       });
@@ -92,18 +98,24 @@ export const PreviewResultScreen = ({
           source={{ uri: image_url }}
         />
         <Box w="full" h="2px" background="gray.200" />
-        <Heading>Các bước giải</Heading>
+        <Heading>Solution steps</Heading>
         <Stack space={2}>
           {steps.map((step, idx) => (
-            <Text key={idx}>
-              {Object.keys(step)[0]}: {Object.values(step)[0]}
+            <Text
+              fontSize="16px"
+              color="gray.700"
+              fontWeight="semibold"
+              key={idx}
+            >
+              {/* {Object.keys(step)[0]}: {Object.values(step)[0]} */}
+              {step}
             </Text>
           ))}
         </Stack>
         <Box w="full" h="2px" background="gray.200" />
       </Stack>
       <VStack space={3} mt={4}>
-        <Heading>Các bài viết liên quan</Heading>
+        <Heading>Related posts</Heading>
         {render()}
       </VStack>
     </ScrollView>

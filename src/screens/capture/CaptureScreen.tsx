@@ -152,7 +152,7 @@ export function CaptureScreen({ navigation }: RootTabScreenProps<'Capture'>) {
             >
               <AntDesign name="clouduploado" size={28} color="gray" />
               <Text fontSize="16px" color="gray.500">
-                Chọn ảnh
+                Select File
               </Text>
             </Stack>
             {/* <Image
@@ -188,7 +188,7 @@ export function CaptureScreen({ navigation }: RootTabScreenProps<'Capture'>) {
             background="#62929E"
           >
             <Text fontSize="20px" fontWeight="bold" color="white">
-              Mở camera
+              Open Camera
             </Text>
           </Button>
         </Stack>

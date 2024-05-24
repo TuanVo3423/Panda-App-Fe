@@ -27,7 +27,7 @@ export const HomeScreen = (props: any) => {
             source={{
               uri: 'https://res.cloudinary.com/dftz2tmpm/image/upload/v1716476248/panda-vku/hdhrrucpoe5wexcf8usv.png',
             }}
-            className="h-4 w-4 flex-1 ml-[-20px]"
+            className="h-6 w-24 flex-1 ml-[-34px]"
           />
           {/* <Text className="flex-1">LOGO PANDA</Text> */}
           <View className="flex-row justify-center items-center space-x-3">
@@ -69,7 +69,7 @@ export const HomeScreen = (props: any) => {
         {/* Category   */}
         <Category />
         {/* Post */}
-        <Trend />
+        <Trend navigation={navigation} />
         {/* Study */}
         <Study />
         {/* SpeacialBanner */}
@@ -81,7 +81,7 @@ export const HomeScreen = (props: any) => {
         {/* Troll  */}
         {/* <TrollFriends /> */}
         {/* Quotes  */}
-        <Quotes content="Miet mai quay tay van may se toi" />
+        <Quotes content="The English language is a work in progress. Have fun with it." />
       </ScrollView>
     </SafeAreaView>
   );

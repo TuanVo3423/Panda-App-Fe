@@ -21,6 +21,8 @@ import { AppStackScreenProps, RootTabScreenProps } from '@navigation/data';
 import { ActivityIndicator, TouchableOpacity } from 'react-native';
 import ImageView from 'react-native-image-viewing';
 import { TYPE_POST } from '@constants/index';
+import { formatDistanceToNow, parseISO } from 'date-fns';
+// import { en } from 'date-fns/locale';
 interface IPostRequest {
   data: IUpdatePostRequest;
   post_id: string;
@@ -37,6 +39,8 @@ export const Post = ({
   image_buffering,
   user_id,
   Comment,
+  createdAt,
+  updatedAt,
   User,
 }: IPostResponse & { navigation: any }) => {
   const { UserProfile } = useAuthenticatedStore();
@@ -44,6 +48,9 @@ export const Post = ({
   const [upvoteNumber, setUpvoteNumber] = React.useState<number>(upvote);
   const [visible, setIsVisible] = useState(false);
   const toast = useToast();
+  // Parse ISO string to Date object
+  const date = parseISO(createdAt);
+  const timeAgo = formatDistanceToNow(date, { addSuffix: true });
 
   // // console.log('Comment', Comment.length);
   const {
@@ -119,7 +126,7 @@ export const Post = ({
           {/* <Text>{User.name}</Text> */}
           {User && <Text>{User.name}</Text>}
         </HStack>
-        <Text>3 ngày trước</Text>
+        <Text>{timeAgo}</Text>
       </HStack>
       <HStack>
         <Stack w="full">

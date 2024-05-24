@@ -11,6 +11,8 @@ export interface IPostResponse {
   upvote: number;
   group_id: string;
   user_id: string;
+  createdAt: string;
+  updatedAt: string;
   Comment: ICommentResponse[];
   User: UserResponse;
 }

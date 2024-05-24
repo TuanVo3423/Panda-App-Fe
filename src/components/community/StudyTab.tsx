@@ -44,6 +44,8 @@ export const StudyTab = ({ navigation }: any) => {
             user_id={post.user_id}
             Comment={post.Comment}
             User={post.User}
+            createdAt={post.createdAt}
+            updatedAt={post.updatedAt}
           />
         ));
     }

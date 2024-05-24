@@ -33,7 +33,13 @@ export const FormPostScreen = ({
   const [image, setImage] = useState<string>('');
   const { UserProfile } = useAuthenticatedStore();
   // const [value, setValue] = React.useState<string>(TYPE_POST.PROBLEM);
-  const [data, setData] = useState<any>({
+  const [data, setData] = useState<{
+    title: string;
+    content: string;
+    questionContent: string;
+    type: string;
+    image_buffering: string;
+  }>({
     title: '',
     content: '',
     questionContent: '',
@@ -131,9 +137,9 @@ export const FormPostScreen = ({
       <Stack>
         {/* header */}
         <HStack
-          paddingTop="20px"
+          paddingTop="10px"
           paddingRight="10px"
-          paddingBottom={0}
+          paddingBottom="5px"
           paddingLeft="5px"
           justifyContent="space-between"
           alignItems="center"
@@ -147,14 +153,16 @@ export const FormPostScreen = ({
           <Heading size="md">Upload Form</Heading>
           <Button
             isLoading={loading}
-            disabled={isDisabled}
+            isDisabled={isDisabled}
             onPress={async () => {
               await handleUploadToCloudinary();
               await handleUploadPost();
             }}
-            variant="ghost"
+            variant="outline"
           >
-            <Text>Upload</Text>
+            <Text fontSize="16px" fontWeight="semibold">
+              Upload
+            </Text>
           </Button>
         </HStack>
         <Stack h="full" px={4} space={4}>

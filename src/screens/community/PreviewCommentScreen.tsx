@@ -36,6 +36,8 @@ export const PreviewCommentScreen = ({
   const toast = useToast();
   const queryClient = useQueryClient();
 
+  const isDisabled = commentInput === '';
+
   const [ImagePickerObject, setImagePickerObject] =
     useState<ImagePicker.ImagePickerResult>();
   const [image, setImage] = useState<string>('');
@@ -128,8 +130,10 @@ export const PreviewCommentScreen = ({
       );
     if (data.length === 0)
       return (
-        <Center flex={1}>
-          <Text>No Comment Yet!</Text>
+        <Center mt={2} flex={1}>
+          <Text fontSize="16px" fontWeight="semibold">
+            No Comment Yet!
+          </Text>
         </Center>
       );
     if (data.length > 0) {
@@ -141,6 +145,8 @@ export const PreviewCommentScreen = ({
               image={item.image}
               content={item.content}
               User={item.User}
+              createdAt={item.createdAt}
+              updatedAt={item.updatedAt}
             />
           ))}
         </View>
@@ -159,7 +165,7 @@ export const PreviewCommentScreen = ({
           value={commentInput}
           onChangeText={(text) => setCommentInput(text)}
           size="md"
-          placeholder="Nhập bình luận của bạn..."
+          placeholder="Enter your comment..."
         />
         {image ? (
           <MaterialCommunityIcons
@@ -178,6 +184,7 @@ export const PreviewCommentScreen = ({
         )}
 
         <Button
+          isDisabled={isDisabled}
           minW="80px"
           isLoading={loading}
           onPress={async () => {
@@ -185,7 +192,7 @@ export const PreviewCommentScreen = ({
             await handleCreateComment();
           }}
         >
-          <Text>Bình luận</Text>
+          <Text>Comment</Text>
         </Button>
       </HStack>
     </Flex>

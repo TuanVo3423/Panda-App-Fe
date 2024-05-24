@@ -28,7 +28,7 @@ export const TeacherProfileScreen = ({
             avaUri={data.avaUri ? data.avaUri : ANOMYMOUS_AVATAR}
             userName={data.userName}
             location="Vietnam-Korean University"
-            status="No Pain No Money"
+            status="Vietnam-Korean University"
             noLoves={data.noLoves}
             rank="B"
           />
@@ -38,7 +38,7 @@ export const TeacherProfileScreen = ({
             rating={data.Rating_float}
             measure=""
           />
-          <Review />
+          <Review id={data.id} />
         </View>
       </ScrollView>
     </SafeAreaView>

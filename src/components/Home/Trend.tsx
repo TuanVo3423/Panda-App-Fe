@@ -4,8 +4,9 @@ import { Post } from './Post';
 import Feather from '@expo/vector-icons/Feather';
 import { useGetPosts } from '@services/api/posts/queries';
 import { Center } from 'native-base';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
-const Trend = () => {
+const Trend = ({ navigation }: any) => {
   const { data, isLoading } = useGetPosts();
   const render = () => {
     if (isLoading) {
@@ -20,13 +21,15 @@ const Trend = () => {
         .sort((a: any, b: any) => b.upvote - a.upvote)
         .slice(0, 3)
         .map((post: any, index: number) => (
-          <Post
-            key={index}
-            avaUri={post.User.avatar}
-            userName={post.User.name}
-            status={post.title}
-            imgUri={post.image_buffering}
-          />
+          <TouchableOpacity onPress={() => navigation.navigate('Community')}>
+            <Post
+              key={index}
+              avaUri={post.User.avatar}
+              userName={post.User.name}
+              status={post.title}
+              imgUri={post.image_buffering}
+            />
+          </TouchableOpacity>
         ));
     }
   };
