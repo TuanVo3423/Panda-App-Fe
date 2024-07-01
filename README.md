@@ -1,5 +1,7 @@
 # PANDA Application
 
+## Link Back-End repository: https://github.com/vinhdnvn/BECrossPLatform
+
 ## 1. Scope
 
 The application's features revolve around two main goals:
