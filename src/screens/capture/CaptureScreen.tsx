@@ -61,6 +61,12 @@ export function CaptureScreen({ navigation }: RootTabScreenProps<'Capture'>) {
     }
   };
 
+  const parseCompletionData = (completionText) => {
+    // Remove the markdown code block formatting and parse the JSON
+    const jsonString = completionText.replace(/```json\n|\n```/g, '').trim();
+    return JSON.parse(jsonString);
+  };
+
   const handleUploadToCloudinary = async () => {
     try {
       setIsUploadingImage(true);
@@ -68,14 +74,18 @@ export function CaptureScreen({ navigation }: RootTabScreenProps<'Capture'>) {
         ImagePickerObject as ImagePicker.ImagePickerSuccessResult
       );
       const text = await getOCR(data.url);
+      const parsedData = parseCompletionData((text as any).completion);
+      const input = parsedData.input;
+      const steps = parsedData.steps;
+
       const PostRelated = await getCaptureResult({
-        query: text.input,
+        query: input,
       });
 
       navigation.navigate('PreviewCaptureResult', {
         image_url: data.url,
-        input: text.input,
-        steps: text.steps,
+        input: input,
+        steps: steps,
         data: PostRelated,
       });
       // if (!isLoading) {
@@ -96,7 +106,7 @@ export function CaptureScreen({ navigation }: RootTabScreenProps<'Capture'>) {
       // });
       setIsUploadingImage(false);
     } catch (err) {
-      // console.log('err: ', err);
+      console.log('err: ', err);
     }
   };
 

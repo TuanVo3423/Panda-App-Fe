@@ -24,6 +24,7 @@ const queryClient = new QueryClient();
 
 export default function App() {
   LogBox.ignoreAllLogs();
+  console.warn = () => {};
   const [fontsLoaded] = useFonts({
     Inter_400Regular,
     Inter_600SemiBold,

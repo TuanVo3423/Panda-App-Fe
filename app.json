@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "yourapp",
-    "slug": "yourapp",
+    "slug": "pandavku",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -14,7 +14,9 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.angeloricardoweb.yourapp"
@@ -24,7 +26,9 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "permissions": ["android.permission.RECORD_AUDIO"],
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ],
       "package": "com.angeloricardoweb.yourapp"
     },
     "web": {
@@ -58,12 +62,23 @@
                       "group.com.angeloricardoweb.yourapp.onesignal"
                     ]
                   }
+                },
+                {
+                  "targetName": "OneSignalNotificationServiceExtension",
+                  "bundleIdentifier": "com.angeloricardoweb.yourapp.OneSignalNotificationServiceExtension",
+                  "entitlements": {
+                    "com.apple.security.application-groups": [
+                      "group.com.angeloricardoweb.yourapp.onesignal"
+                    ]
+                  }
                 }
               ]
             }
           }
-        }
+        },
+        "projectId": "03a8cbf7-a420-4417-a638-344411d5a511"
       }
-    }
+    },
+    "owner": "tuanhl"
   }
 }

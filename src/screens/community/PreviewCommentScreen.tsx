@@ -35,6 +35,7 @@ export const PreviewCommentScreen = ({
   const [commentInput, setCommentInput] = useState<string>('');
   const toast = useToast();
   const queryClient = useQueryClient();
+  console.log('data', data);
 
   const isDisabled = commentInput === '';
 
@@ -83,6 +84,7 @@ export const PreviewCommentScreen = ({
       },
       {
         onSuccess: (data) => {
+          console.log('data success', data);
           setCommentInput('');
           queryClient.prefetchQuery('getPosts');
           queryClient.setQueryData(['getComments', post_id], (oldData: any) => {
@@ -156,10 +158,10 @@ export const PreviewCommentScreen = ({
 
   return (
     <Flex flexDir="column" w="full" h="full">
-      <ScrollView w="full" h="85%">
+      <ScrollView w="full" flex={1}>
         {renderComment()}
       </ScrollView>
-      <HStack alignItems="center" px={4} space={2} mb={1} flex={1}>
+      <HStack height={70} alignItems="center" px={4} space={2} mb={1}>
         <Input
           flex={1}
           value={commentInput}

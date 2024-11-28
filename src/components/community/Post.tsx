@@ -9,7 +9,7 @@ import {
   Text,
   useToast,
 } from 'native-base';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 import { IPostResponse, IUpdatePostRequest } from '@services/api/posts/types';
